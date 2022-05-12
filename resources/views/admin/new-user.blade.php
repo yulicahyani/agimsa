@@ -162,7 +162,7 @@
                     <div class="form-group">
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="jenis-kelamin" id="laki-laki" value="laki-laki" checked>
-                        <label class="form-check-label">Laki-laku</label>
+                        <label class="form-check-label">Laki-laki</label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="radio" name="jenis-kelamin" id="perempuan" value="perempuan">
