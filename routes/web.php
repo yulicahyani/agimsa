@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 /* Testing */
 Route::get('/', function () {
-    return view('admin\dashboard');
+    return view('admin\dashboard', [
+        "title" => "Dashboard"
+    ]);
 });
 
 
@@ -28,42 +31,62 @@ Route::get('/login', function () {
 /* Admin */
 
 Route::get('/dashboard', function () {
-    return view('admin\dashboard');
+    return view('admin\dashboard', [
+        "title" => "Dashboard"
+    ]);
 });
 
 Route::get('/new-user', function () {
-    return view('admin\new-user');
+    return view('admin\new-user', [
+        "title" => "New User"
+    ]);
 });
 
 Route::get('/data-pegawai', function () {
-    return view('admin\data-pegawai');
+    return view('admin\data-pegawai', [
+        "title" => "Data Pegawai"
+    ]);
 });
 
 Route::get('/customer', function () {
-    return view('admin\customer');
+    return view('admin\customer', [
+        "title" => "Customer"
+    ]);
 });
 
 Route::get('/pemesanan', function () {
-    return view('admin\pemesanan');
+    return view('admin\pemesanan', [
+        "title" => "Pemesanan"
+    ]);
 });
 
 Route::get('/penjualan-baru', function () {
-    return view('admin\penjualan-baru');
+    return view('admin\penjualan-baru', [
+        "title" => "Penjualan Baru"
+    ]);
 });
 
 Route::get('/jumlah-penjualan', function () {
-    return view('admin\jumlah-penjualan');
+    return view('admin\jumlah-penjualan', [
+        "title" => "Jumlah Penjualan"
+    ]);
 });
 
 Route::get('/target', function () {
-    return view('admin\target');
+    return view('admin\target', [
+        "title" => "Target"
+    ]);
 });
 
 Route::get('/pengiriman', function () {
-    return view('admin\pengiriman');
+    return view('admin\pengiriman', [
+        "title" => "Pengiriman"
+    ]);
 });
 
 Route::get('/penjadwalan', function () {
-    return view('admin\penjadwalan');
+    return view('admin\penjadwalan', [
+        "title" => "Penjadwalan"
+    ]);
 });
 
