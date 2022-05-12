@@ -75,12 +75,111 @@
 
     <!-- Main content -->
     <section class="content">
-      <div class="container-fluid">
-        <div class="card text-center bg-abu-putih" style="height: 250px">
-            <h1 class="my-auto">Selamat Datang New User</h1>
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+          <!-- general form elements -->
+          <div class="card">
+            <!-- form start -->
+            <form>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Nama Pegawai</label>
+                      <input type="text" name="nama-pegawai" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Alamat</label>
+                      <input type="text" name="alamat" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- textarea -->
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input type="text" name="email" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>No Telepon</label>
+                      <input type="number" name="no-telepon" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- textarea -->
+                    <div class="form-group">
+                      <label>Tempat Lahir</label>
+                      <input type="text" name="tempat-lahir" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Tanggal Lahir</label>
+                      <input type="date" name="tanggal-lahir" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- textarea -->
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input type="text" name="username" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input type="text" name="password" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- textarea -->
+                    <div class="form-group">
+                      <label>Agama</label>
+                      <input type="text" name="Agama" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Jabatan</label>
+                      <input type="text" name="jabatan" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- radio -->
+                    <label for="">Jenis Kelamin</label>
+                    <div class="form-group">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="jenis-kelamin" id="laki-laki" value="laki-laki" checked>
+                        <label class="form-check-label">Laki-laku</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="jenis-kelamin" id="perempuan" value="perempuan">
+                        <label class="form-check-label">Perempuan</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-body -->
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.card -->
     </section>
     <!-- /.content -->
   </div>
