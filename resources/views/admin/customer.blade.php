@@ -29,6 +29,11 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
 
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
   @endpush
@@ -59,7 +64,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Add New Customer</h1>
+            <h1 class="m-0">Customer</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -76,11 +81,78 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="card text-center bg-abu-putih" style="height: 250px">
-            <h1 class="my-auto">Selamat Datang Customer</h1>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <a href="#" class="btn btn-success" title='tambah'>
+                  <p class="mb-auto">
+                    Tambah Customer
+                    <i class='ion ion-person-add'></i>
+                  </p>
+                </a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Nama Customer</th>
+                    <th>Daerah</th>
+                    <th>Alamat</th>
+                    <th>Telepon</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Sari</td>
+                    <td>Badung</td>
+                    <td>jln. Raya Badung</td>
+                    <td>08512345</td>
+                    <td>Sari@gmail.com</td>
+                    <td>
+                      <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                        <i class='fa fa-eye'></i>
+                      </a>
+                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                        <i class="fa fa-edit"></i>
+                      </a>                                     
+                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Dyah Sari</td>
+                    <td>Badung</td>
+                    <td>jln. Raya Badung</td>
+                    <td>08512345</td>
+                    <td>Dyah@gmail.com</td>
+                    <td>
+                      <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                        <i class='fa fa-eye'></i>
+                      </a>
+                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                        <i class="fa fa-edit"></i>
+                      </a>                                     
+                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
@@ -127,5 +199,28 @@
 {{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
+
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('') }}assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/jszip/jszip.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+</script>
 </body>
 </html>

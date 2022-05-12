@@ -29,6 +29,11 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
 
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
   @endpush
@@ -73,59 +78,146 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="card text-center bg-abu-putih" style="height: 250px">
-            <h1 class="my-auto">Selamat Datang Penjadwalan</h1>
+       <!-- Main content -->
+       <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-header">
+                  <a href="#" class="btn btn-success" title='tambah'>
+                    <p class="mb-auto">
+                      Tambah Jadwal
+                      <i class='fa fa-plus'></i>
+                    </p>
+                  </a>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                      <th>ID.Kunjungan</th>
+                      <th>Tanggal</th>
+                      <th>Status</th>
+                      <th>Status</th>
+                      <th>Aksi</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>0001</td>
+                      <td>Mengwi</td>
+                      <td>712/01/2021</td>
+                      <td>Selesai</td>
+                      <td>
+                        <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                          <i class='fa fa-eye'></i>
+                        </a>
+                        <a href="#" title='edit' class="btn btn-warning btn-sm">
+                          <i class="fa fa-edit"></i>
+                        </a>                                     
+                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                          <i class="far fa-trash-alt"></i>
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>0001</td>
+                      <td>Mengwi</td>
+                      <td>712/01/2021</td>
+                      <td>Selesai</td>
+                      <td>
+                        <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                          <i class='fa fa-eye'></i>
+                        </a>
+                        <a href="#" title='edit' class="btn btn-warning btn-sm">
+                          <i class="fa fa-edit"></i>
+                        </a>                                     
+                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                          <i class="far fa-trash-alt"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+   
+    <!-- footer -->
+    @include('admin.admin_layouts.footer')
+    <!-- /footer -->
+  
   </div>
-  <!-- /.content-wrapper -->
- 
-  <!-- footer -->
-  @include('admin.admin_layouts.footer')
-  <!-- /footer -->
-
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="{{ asset('') }}assets/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('') }}assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('') }}assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="{{ asset('') }}assets/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="{{ asset('') }}assets/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="{{ asset('') }}assets/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="{{ asset('') }}assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset('') }}assets/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="{{ asset('') }}assets/plugins/moment/moment.min.js"></script>
-<script src="{{ asset('') }}assets/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset('') }}assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset('') }}assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('') }}assets/dist/js/adminlte.js"></script>
-<!-- AdminLTE for demo purposes -->
-{{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
+  <!-- ./wrapper -->
+  
+  <!-- jQuery -->
+  <script src="{{ asset('') }}assets/plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="{{ asset('') }}assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <!-- Bootstrap 4 -->
+  <script src="{{ asset('') }}assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ChartJS -->
+  <script src="{{ asset('') }}assets/plugins/chart.js/Chart.min.js"></script>
+  <!-- Sparkline -->
+  <script src="{{ asset('') }}assets/plugins/sparklines/sparkline.js"></script>
+  <!-- JQVMap -->
+  <script src="{{ asset('') }}assets/plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="{{ asset('') }}assets/plugins/jquery-knob/jquery.knob.min.js"></script>
+  <!-- daterangepicker -->
+  <script src="{{ asset('') }}assets/plugins/moment/moment.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="{{ asset('') }}assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  <!-- Summernote -->
+  <script src="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- overlayScrollbars -->
+  <script src="{{ asset('') }}assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ asset('') }}assets/dist/js/adminlte.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  {{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
+  
+  <!-- DataTables  & Plugins -->
+  <script src="{{ asset('') }}assets/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/jszip/jszip.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  
+  <script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+  </script>
 </body>
 </html>
