@@ -29,6 +29,11 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
 
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
   @endpush
@@ -76,11 +81,76 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="card text-center bg-abu-putih" style="height: 250px">
-            <h1 class="my-auto">Selamat Datang Pemesanan</h1>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Alamat</th>
+                    <th>Kode Barang</th>
+                    <th>Nama Barang</th>
+                    <th>Qty</th>
+                    <th>Pembelian</th>
+                    <th>Harga</th>
+                    <th>Status</th>
+                    <th>Sales</th>
+                    <th>Action</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Dyah Sari</td>
+                    <td>Ayani</td>
+                    <td>0101</td>
+                    <td>Hair Straight</td>
+                    <td>3</td>
+                    <td>Cash</td>
+                    <td>238.700</td>
+                    <td>Komang</td>
+                    <td>Setuju</td>
+                    <td>
+                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                        <i class="fa fa-edit"></i>
+                      </a>                                     
+                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Dyah Sari</td>
+                    <td>Ayani</td>
+                    <td>0101</td>
+                    <td>Hair Straight</td>
+                    <td>3</td>
+                    <td>Cash</td>
+                    <td>238.700</td>
+                    <td>Komang</td>
+                    <td>Setuju</td>
+                    <td>
+                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                        <i class="fa fa-edit"></i>
+                      </a>                                     
+                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                        <i class="far fa-trash-alt"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
         </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
@@ -127,5 +197,29 @@
 {{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
+
+
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('') }}assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/jszip/jszip.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  });
+</script>
 </body>
 </html>
