@@ -85,13 +85,13 @@
                   <!-- text input -->
                   <div class="form-group">
                     <label>Nama Customer</label>
-                    <input type="text" name="nama-pegawai" class="form-control" value="Dyah Sari" disabled>
+                    <input type="text" name="nama_customer" class="form-control" value="{{ $customer->nama_customer }}" disabled>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Daerah</label>
-                    <input type="text" name="alamat" class="form-control" value="Kuta" disabled>
+                    <input type="text" name="daerah" class="form-control" value="{{ $customer->daerah }}" disabled>
                   </div>
                 </div>
               </div>
@@ -100,13 +100,13 @@
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Alamat</label>
-                    <input type="text" name="email" class="form-control" value="jln. Raya Canggu" disabled>
+                    <input type="text" name="alamat" class="form-control" value="{{ $customer->alamat }}" disabled>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>No Telepon</label>
-                    <input type="text" name="no-telepon" class="form-control" value="0856425777" disabled>
+                    <input type="text" name="telepon" class="form-control" value="{{ $customer->telepon }}" disabled>
                   </div>
                 </div>
               </div>
@@ -115,7 +115,7 @@
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="tempat-lahir" class="form-control" value="dyah@gmail.com" disabled>
+                    <input type="text" name="email" class="form-control" value="{{ $customer->email }}" disabled>
                   </div>
                 </div>
               </div>

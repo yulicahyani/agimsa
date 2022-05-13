@@ -78,20 +78,21 @@
         <!-- general form elements -->
         <div class="card">
           <!-- form start -->
-          <form>
+          <form method="POST">
+            @csrf
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-6">
                   <!-- text input -->
                   <div class="form-group">
                     <label>Nama Customer</label>
-                    <input type="text" name="nama-pegawai" class="form-control" placeholder="Enter ...">
+                    <input type="text" name="nama_customer" class="form-control" placeholder="Enter ..." required>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Daerah</label>
-                    <input type="text" name="alamat" class="form-control" placeholder="Enter ...">
+                    <input type="text" name="daerah" class="form-control" placeholder="Enter ..." required>
                   </div>
                 </div>
               </div>
@@ -100,13 +101,13 @@
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Alamat</label>
-                    <input type="text" name="email" class="form-control" placeholder="Enter ...">
+                    <input type="text" name="alamat" class="form-control" placeholder="Enter ..." required>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>No Telepon</label>
-                    <input type="number" name="no-telepon" class="form-control" placeholder="Enter ...">
+                    <input type="number" name="telepon" class="form-control" placeholder="Enter ..." required>
                   </div>
                 </div>
               </div>
@@ -115,7 +116,7 @@
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="tempat-lahir" class="form-control" placeholder="Enter ...">
+                    <input type="email" name="email" class="form-control" placeholder="Enter ..." required>
                   </div>
                 </div>
               </div>
