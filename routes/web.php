@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,7 @@ use App\Http\Controllers\LoginController;
 
 
 /* Testing */
-Route::get('/', function () {
-    return view('admin\dashboard', [
-        "title" => "Dashboard"
-    ]);
-});
+Route::get('/', [DashboardController::class, 'index'])->name('index');
 
 
 /* Login */
