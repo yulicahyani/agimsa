@@ -16,16 +16,31 @@
     <title>Agimsa | Login</title>
 </head>
 
-<body style="background-color: rgb(214, 214, 214);">
+<body style="background-color: rgb(156, 156, 156);">
 
     <div class="container mt-5">
+        <div class="row justify-content-center mt-5 ml-5 mr-5">
+            <div style="width: 25rem;">
+                @if (session()->has('loginError'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    {{session('loginError')}}
+                </div>
+                @endif
+                @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    {{session('success')}}
+                </div>
+                @endif
+            </div>
+        </div>
         <div class="row justify-content-center">
             <div class="card text-center" style="width: 25rem; padding:0">
                 <div class="card-header bg-dark">
                     <h5 class="text-light p-1">Login | CV.AGIMSA</h5>
                 </div>
                 <div class="card-body">
-                    <form class="" method="POST" action="">
+                    <form class="" method="POST" action="{{ route('login.authenticate')}}">
+                        @csrf
                         <div class="input-group mb-3 mt-5">
                             <input type="text" class="form-control" id="username" name="username" placeholder="Username"
                                 aria-label="Username" aria-describedby="basic-addon2" required>
