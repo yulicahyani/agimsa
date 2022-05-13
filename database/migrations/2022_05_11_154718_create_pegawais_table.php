@@ -17,6 +17,7 @@ class CreatePegawaisTable extends Migration
             $table->id('id_pegawai');
             $table->string('jabatan', 10);
             $table->string('nama_pegawai', 10);
+            $table->string('tempat_lahir', 10);
             $table->date('tgl_lahir');
             $table->string('jenis_kelamin', 10);
             $table->integer('no_tlp');
