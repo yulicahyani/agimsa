@@ -3,25 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use App\Http\Controllers\LoginController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\PemesananController;
+use App\Http\Controllers\PengirimanController;
+use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\TargetController;
 
 
-/* Testing */
-Route::get('/', function () {
-    return view('admin\dashboard', [
-        "title" => "Dashboard"
-    ]);
-});
+/* Dashboard */
+Route::get('/', [DashboardController::class, 'index'])->name('index');
 
 
 /* Login */
@@ -31,17 +24,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 /* -----------Admin-----------------*/
 
-Route::get('/dashboard', function () {
-    return view('admin\dashboard', [
-        "title" => "Dashboard"
-    ]);
-});
+Route::match(['get', 'post'], '/new-user', [PegawaiController::class, 'index'])->name('new-user');
 
-Route::get('/new-user', function () {
-    return view('admin\new-user', [
-        "title" => "New User"
-    ]);
-});
 
 Route::get('/data-pegawai', function () {
     return view('admin\data-pegawai', [

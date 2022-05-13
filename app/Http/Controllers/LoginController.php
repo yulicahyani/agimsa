@@ -23,7 +23,7 @@ class LoginController extends Controller
         $user = Pegawai::where('username', '=', $credentials['username'])->where('password', '=', $credentials['password'])->get();
 
         if(count($user)>0){
-            $request->session()->put('user', $user);
+            $request->session()->put('user', $user[0]);
             return redirect('/');
         }
 

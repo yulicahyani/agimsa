@@ -10,7 +10,7 @@ class Penjualan extends Model
     use HasFactory;
 
     protected $table = 'tb_penjualan';
-    protected $primaryKey = 'no_faktur';
+    protected $primaryKey = 'id_penjualan';
 
     public function pemesanan()
     {

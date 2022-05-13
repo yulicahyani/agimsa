@@ -14,7 +14,8 @@ class CreatePenjualansTable extends Migration
     public function up()
     {
         Schema::create('tb_penjualan', function (Blueprint $table) {
-            $table->id('no_faktur');
+            $table->id('id_penjualan');
+            $table->string('no_faktur');
             $table->foreignId('id_pemesanan')->unsigned();
             $table->foreignId('kode_barang')->unsigned();
             $table->string('nama_barang', 10);
