@@ -23,26 +23,12 @@ Route::post('/login/authenticate', [LoginController::class, 'authenticate'])->na
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 /* -----------Admin-----------------*/
-
+// Pegawai
 Route::match(['get', 'post'], '/new-user', [PegawaiController::class, 'index'])->name('new-user');
-
-
-Route::get('/data-pegawai', function () {
-    return view('admin\data-pegawai', [
-        "title" => "Data Pegawai"
-    ]);
-});
-
-Route::get('/edit-pegawai', function () {
-    return view('admin\edit-pegawai', [
-        "title" => "Data Pegawai"
-    ]);
-});
-Route::get('/lihat-pegawai', function () {
-    return view('admin\lihat-pegawai', [
-        "title" => "Data Pegawai"
-    ]);
-});
+Route::get('/data-pegawai', [PegawaiController::class, 'data_pegawai'])->name('data-pegawai');
+Route::get('/lihat-pegawai/{id}', [PegawaiController::class, 'detail_pegawai'])->name('lihat-pegawai');
+Route::match(['get', 'post'], '/edit-pegawai/{id}', [PegawaiController::class, 'edit_pegawai'])->name('edit-pegawai');
+Route::post('/delete-pegawai', [PegawaiController::class, 'delete_pegawai'])->name('delete-pegawai');
 
 Route::get('/customer', function () {
     return view('admin\customer', [
