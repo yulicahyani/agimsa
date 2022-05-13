@@ -28,7 +28,7 @@ Route::get('/login', function () {
     return view('login');
 });
 
-/* Admin */
+/* -----------Admin-----------------*/
 
 Route::get('/dashboard', function () {
     return view('admin\dashboard', [
@@ -48,8 +48,37 @@ Route::get('/data-pegawai', function () {
     ]);
 });
 
+Route::get('/edit-pegawai', function () {
+    return view('admin\edit-pegawai', [
+        "title" => "Data Pegawai"
+    ]);
+});
+Route::get('/lihat-pegawai', function () {
+    return view('admin\lihat-pegawai', [
+        "title" => "Data Pegawai"
+    ]);
+});
+
 Route::get('/customer', function () {
     return view('admin\customer', [
+        "title" => "Customer"
+    ]);
+});
+
+Route::get('/lihat-customer', function () {
+    return view('admin\lihat-customer', [
+        "title" => "Customer"
+    ]);
+});
+
+Route::get('/edit-customer', function () {
+    return view('admin\edit-customer', [
+        "title" => "Customer"
+    ]);
+});
+
+Route::get('/tambah-customer', function () {
+    return view('admin\tambah-customer', [
         "title" => "Customer"
     ]);
 });

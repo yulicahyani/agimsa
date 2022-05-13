@@ -85,7 +85,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="#" class="btn btn-success" title='tambah'>
+                <a href="/tambah-customer" class="btn btn-success" title='tambah'>
                   <p class="mb-auto">
                     Tambah Customer
                     <i class='ion ion-person-add'></i>
@@ -113,10 +113,10 @@
                     <td>08512345</td>
                     <td>Sari@gmail.com</td>
                     <td>
-                      <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                      <a href="/lihat-customer" class="btn btn-info btn-sm btn-status" title='Lihat'>
                         <i class='fa fa-eye'></i>
                       </a>
-                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                      <a href="/edit-customer" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
                       <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
@@ -131,10 +131,10 @@
                     <td>08512345</td>
                     <td>Dyah@gmail.com</td>
                     <td>
-                      <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                      <a href="lihat-customer" class="btn btn-info btn-sm btn-status" title='Lihat'>
                         <i class='fa fa-eye'></i>
                       </a>
-                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                      <a href="/edit-customer" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
                       <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>

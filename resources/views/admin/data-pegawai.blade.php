@@ -107,10 +107,10 @@
                     <td>KetutS123</td>
                     <td>12345</td>
                     <td>
-                      <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                      <a href="/lihat-pegawai" class="btn btn-info btn-sm btn-status" title='Lihat'>
                         <i class='fa fa-eye'></i>
                       </a>
-                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                      <a href="/edit-pegawai" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
                       <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
@@ -126,10 +126,10 @@
                     <td>KetutS123</td>
                     <td>12345</td>
                     <td>
-                      <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                      <a href="/lihat-pegawai" class="btn btn-info btn-sm btn-status" title='Lihat'>
                         <i class='fa fa-eye'></i>
                       </a>
-                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                      <a href="/edit-pegawai" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
                       <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>

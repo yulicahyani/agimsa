@@ -96,8 +96,8 @@
                     <th>Qty</th>
                     <th>Pembelian</th>
                     <th>Harga</th>
-                    <th>Status</th>
                     <th>Sales</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
