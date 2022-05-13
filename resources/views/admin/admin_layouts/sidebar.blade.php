@@ -14,7 +14,7 @@
           <img src="{{ asset('') }}assets/dist/img/profil2.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ session('user')==null?'':session}}</a>
+          <a href="#" class="d-block">{{ session('user')==null?'':session('user')->jabatan}}</a>
         </div>
       </div>
 
