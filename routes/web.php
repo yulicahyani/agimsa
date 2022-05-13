@@ -90,6 +90,12 @@ Route::get('/pemesanan', function () {
     ]);
 });
 
+Route::get('/edit-pemesanan', function () {
+    return view('admin\edit-pemesanan', [
+        "title" => "Pemesanan"
+    ]);
+});
+
 Route::get('/penjualan-baru', function () {
     return view('admin\penjualan-baru', [
         "title" => "Penjualan Baru"
@@ -98,6 +104,12 @@ Route::get('/penjualan-baru', function () {
 
 Route::get('/jumlah-penjualan', function () {
     return view('admin\jumlah-penjualan', [
+        "title" => "Jumlah Penjualan"
+    ]);
+});
+
+Route::get('/lihat-penjualan', function () {
+    return view('admin\lihat-penjualan', [
         "title" => "Jumlah Penjualan"
     ]);
 });
