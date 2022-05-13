@@ -16,7 +16,7 @@ class CreateTargetsTable extends Migration
         Schema::create('tb_target', function (Blueprint $table) {
             $table->id('id_target');
             $table->foreignId('id_pegawai')->unsigned();
-            $table->string('nama_sales', 10);
+            $table->string('nama_sales', 100);
             $table->date('tanggal');
             $table->integer('penjualan');
             $table->string('persentase', 10);

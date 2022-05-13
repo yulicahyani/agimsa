@@ -18,12 +18,12 @@ class CreatePenjualansTable extends Migration
             $table->string('no_faktur');
             $table->foreignId('id_pemesanan')->unsigned();
             $table->foreignId('kode_barang')->unsigned();
-            $table->string('nama_barang', 10);
+            $table->string('nama_barang', 100);
             $table->date('tgl_penjualan');
             $table->integer('qty');
             $table->integer('harga');
             $table->integer('total_harga');
-            $table->string('alamat', 10);
+            $table->string('alamat', 100);
         });
 
         Schema::table('tb_penjualan', function (Blueprint $table) {
