@@ -85,7 +85,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <a href="#" class="btn btn-success" title='tambah'>
+                <a href="/tambah-target" class="btn btn-success" title='tambah'>
                   <p class="mb-auto">
                     Tambah Target
                     <i class='fa fa-plus'></i>
@@ -93,11 +93,34 @@
                 </a>
               </div>
               <!-- /.card-header -->
+
+
+              <div class="row mt-3 ml-3">
+                <div class="col-sm-3">
+                    <form action="\penjualan-baru">
+                        <div class="input-group input-group-sm">
+                          <select class="form-control select2" name="bulan" style="width: 80px%;">
+                              <option selected="selected">Periode</option>
+                              <option >Januari</option>
+                              <option>Februari</option>
+                              <option>Maret</option>
+                          </select>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-sm btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              </div>
+
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Nama Pegawai</th>
+                    <th>Tanggal</th>
                     <th>Penjualan</th>
                     <th>Persentase</th>
                     <th>Target</th>
@@ -109,16 +132,17 @@
                   <tbody>
                   <tr>
                     <td>Ketut Setiawan</td>
+                    <td>13/05/2022</td>
                     <td>76.789.00</td>
                     <td>1%</td>
                     <td>100.000.000</td>
                     <td>767.890</td>
                     <td>Belum Tercapai</td>
                     <td>
-                      <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                      <a href="/lihat-target" class="btn btn-info btn-sm btn-status" title='Lihat'>
                         <i class='fa fa-eye'></i>
                       </a>
-                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                      <a href="/edit-target" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
                       <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
@@ -128,16 +152,17 @@
                   </tr>
                   <tr>
                     <td>Dyah Sari</td>
+                    <td>13/05/2022</td>
                     <td>76.789.00</td>
                     <td>1%</td>
                     <td>100.000.000</td>
                     <td>767.890</td>
                     <td>Belum Tercapai</td>
                     <td>
-                      <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                      <a href="/lihat-target" class="btn btn-info btn-sm btn-status" title='Lihat'>
                         <i class='fa fa-eye'></i>
                       </a>
-                      <a href="#" title='edit' class="btn btn-warning btn-sm">
+                      <a href="/edit-target" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
                       <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>

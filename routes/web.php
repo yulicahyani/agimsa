@@ -104,14 +104,69 @@ Route::get('/target', function () {
     ]);
 });
 
+Route::get('/tambah-target', function () {
+    return view('admin\tambah-target', [
+        "title" => "Target"
+    ]);
+});
+
+Route::get('/lihat-target', function () {
+    return view('admin\lihat-target', [
+        "title" => "Target"
+    ]);
+});
+
+Route::get('/edit-target', function () {
+    return view('admin\edit-target', [
+        "title" => "Target"
+    ]);
+});
+
+
 Route::get('/pengiriman', function () {
     return view('admin\pengiriman', [
         "title" => "Pengiriman"
     ]);
 });
 
+Route::get('/tambah-pengiriman', function () {
+    return view('admin\tambah-pengiriman', [
+        "title" => "Pengiriman"
+    ]);
+});
+
+Route::get('/edit-pengiriman', function () {
+    return view('admin\edit-pengiriman', [
+        "title" => "Pengiriman"
+    ]);
+});
+
+Route::get('/lihat-pengiriman', function () {
+    return view('admin\lihat-pengiriman', [
+        "title" => "Pengiriman"
+    ]);
+});
+
 Route::get('/penjadwalan', function () {
     return view('admin\penjadwalan', [
+        "title" => "Penjadwalan"
+    ]);
+});
+
+Route::get('/tambah-penjadwalan', function () {
+    return view('admin\tambah-penjadwalan', [
+        "title" => "Penjadwalan"
+    ]);
+});
+
+Route::get('/edit-penjadwalan', function () {
+    return view('admin\edit-penjadwalan', [
+        "title" => "Penjadwalan"
+    ]);
+});
+
+Route::get('/lihat-penjadwalan', function () {
+    return view('admin\lihat-penjadwalan', [
         "title" => "Penjadwalan"
     ]);
 });

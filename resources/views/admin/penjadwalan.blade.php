@@ -85,7 +85,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <a href="#" class="btn btn-success" title='tambah'>
+                  <a href="/tambah-penjadwalan" class="btn btn-success" title='tambah'>
                     <p class="mb-auto">
                       Tambah Jadwal
                       <i class='fa fa-plus'></i>
@@ -98,8 +98,8 @@
                     <thead>
                     <tr>
                       <th>ID.Kunjungan</th>
+                      <th>Daerah</th>
                       <th>Tanggal</th>
-                      <th>Status</th>
                       <th>Status</th>
                       <th>Aksi</th>
                     </tr>
@@ -108,13 +108,13 @@
                     <tr>
                       <td>0001</td>
                       <td>Mengwi</td>
-                      <td>712/01/2021</td>
+                      <td>12/01/2021</td>
                       <td>Selesai</td>
                       <td>
-                        <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                        <a href="/lihat-penjadwalan" class="btn btn-info btn-sm btn-status" title='Lihat'>
                           <i class='fa fa-eye'></i>
                         </a>
-                        <a href="#" title='edit' class="btn btn-warning btn-sm">
+                        <a href="/edit-penjadwalan" title='edit' class="btn btn-warning btn-sm">
                           <i class="fa fa-edit"></i>
                         </a>                                     
                         <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
@@ -125,13 +125,13 @@
                     <tr>
                       <td>0001</td>
                       <td>Mengwi</td>
-                      <td>712/01/2021</td>
+                      <td>12/01/2021</td>
                       <td>Selesai</td>
                       <td>
-                        <a href="#" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                        <a href="/lihat-penjadwalan" class="btn btn-info btn-sm btn-status" title='Lihat'>
                           <i class='fa fa-eye'></i>
                         </a>
-                        <a href="#" title='edit' class="btn btn-warning btn-sm">
+                        <a href="/edit-penjadwalan" title='edit' class="btn btn-warning btn-sm">
                           <i class="fa fa-edit"></i>
                         </a>                                     
                         <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>

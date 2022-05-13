@@ -88,13 +88,13 @@
               <div class="col-sm-8">
                   <form action="\penjualan-baru">
                       <div class="input-group input-group-sm">
-                        <select class="form-control select2" style="width: 25%;">
+                        <select class="form-control select2" name="customer" style="width: 25%;">
                             <option selected="selected">Customer</option>
                             <option >Diah</option>
                             <option>Ayu</option>
                             <option>Krisna</option>
                         </select>
-                        <select class="form-control select2" style="width: 25%;">
+                        <select class="form-control select2" name="sales" style="width: 25%;">
                             <option selected="selected">Sales</option>
                             <option >Ketut</option>
                             <option>Bayu</option>
@@ -138,13 +138,13 @@
                 <td>
                   <div class="input-group input-group-sm">
                     <label class="mr-2">Alamat :</label>
-                    <input type="text" name="customer" class="form-control" value="Jl. raya Canggu" disabled>
+                    <input type="text" name="alamat" class="form-control" value="Jl. raya Canggu" disabled>
                   </div>
                 </td>
                 <td>
                   <div class="input-group input-group-sm">
                     <label class="mr-2">No Faktur :</label>
-                    <input type="number" name="sales" class="form-control" placeholder="Enter...">
+                    <input type="number" name="faktur" class="form-control" placeholder="Enter...">
                   </div>
                 </td>
               </tr>
