@@ -57,7 +57,7 @@ class CustomerController extends Controller
                 $customer->nama_customer = $post['nama_customer'];
                 $customer->daerah = $post['daerah'];
                 $customer->alamat = $post['alamat'];
-                $customer->telepon = $post['telepon'];
+                $customer->telepon = (string)$post['telepon'];
                 $customer->email = $post['email'];
                 $customer->save();
                 return redirect()->route('customer')->with(['success'=>'Data berhasil ditambahkan']);
@@ -92,7 +92,7 @@ class CustomerController extends Controller
                 $customer->nama_customer = $post['nama_customer'];
                 $customer->daerah = $post['daerah'];
                 $customer->alamat = $post['alamat'];
-                $customer->telepon = $post['telepon'];
+                $customer->telepon = (string)$post['telepon'];
                 $customer->email = $post['email'];
 
                 if ( $customer->isDirty() ){

@@ -35,7 +35,7 @@ class PegawaiController extends Controller
                 $user->tempat_lahir = $post['tempat_lahir'];
                 $user->tgl_lahir = $post['tgl_lahir'];
                 $user->jenis_kelamin = $post['jenis_kelamin'];
-                $user->no_tlp = $post['no_tlp'];
+                $user->no_tlp = (string)$post['no_tlp'];
                 $user->username = $post['username'];
                 $user->password = $post['password'];
                 $user->agama = $post['agama'];
@@ -105,7 +105,7 @@ class PegawaiController extends Controller
                 $pegawai->tempat_lahir = $post['tempat_lahir'];
                 $pegawai->tgl_lahir = $post['tgl_lahir'];
                 $pegawai->jenis_kelamin = $post['jenis_kelamin'];
-                $pegawai->no_tlp = $post['no_tlp'];
+                $pegawai->no_tlp = (string)$post['no_tlp'];
                 $pegawai->username = $post['username'];
                 $pegawai->password = $post['password'];
                 $pegawai->agama = $post['agama'];
