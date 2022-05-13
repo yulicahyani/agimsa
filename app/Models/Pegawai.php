@@ -12,6 +12,7 @@ class Pegawai extends Model
 
     protected $table = 'tb_pegawai';
     protected $primaryKey = 'id_pegawai';
+    public $timestamps = false;
 
 
     public function jadwal()

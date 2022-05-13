@@ -85,13 +85,13 @@
                     <!-- text input -->
                     <div class="form-group">
                       <label>Nama Pegawai</label>
-                      <input type="text" name="nama-pegawai" class="form-control" value="Dyah Sari" disabled>
+                      <input type="text" name="nama-pegawai" class="form-control" value="{{ $pegawai->nama_pegawai }}" disabled>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Alamat</label>
-                      <input type="text" name="alamat" class="form-control" value="jln. Raya Canggu" disabled>
+                      <input type="text" name="alamat" class="form-control" value="{{ $pegawai->alamat }}" disabled>
                     </div>
                   </div>
                 </div>
@@ -100,13 +100,13 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Email</label>
-                      <input type="text" name="email" class="form-control" value="dyah@gmail.com" disabled>
+                      <input type="text" name="email" class="form-control" value="{{ $pegawai->email }}" disabled>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>No Telepon</label>
-                      <input type="text" name="no-telepon" class="form-control" value="0856425777" disabled>
+                      <input type="text" name="no-telepon" class="form-control" value="{{ $pegawai->no_tlp }}" disabled>
                     </div>
                   </div>
                 </div>
@@ -115,13 +115,13 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Tempat Lahir</label>
-                      <input type="text" name="tempat-lahir" class="form-control" value="Badung" disabled>
+                      <input type="text" name="tempat-lahir" class="form-control" value="{{ $pegawai->tempat_lahir }}" disabled>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Tanggal Lahir</label>
-                      <input type="text" name="tanggal-lahir" class="form-control" value="11/02/2022" disabled>
+                      <input type="text" name="tanggal-lahir" class="form-control" value="{{ $pegawai->tgl_lahir }}" disabled>
                     </div>
                   </div>
                 </div>
@@ -130,13 +130,13 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Username</label>
-                      <input type="text" name="username" class="form-control" value="DyahSari" disabled>
+                      <input type="text" name="username" class="form-control" value="{{ $pegawai->username }}" disabled>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Password</label>
-                      <input type="text" name="password" class="form-control" value="12345" disabled>
+                      <input type="password" name="password" class="form-control" value="{{ $pegawai->password }}" disabled>
                     </div>
                   </div>
                 </div>
@@ -145,13 +145,13 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Agama</label>
-                      <input type="text" name="Agama" class="form-control" value="Hindu" disabled>
+                      <input type="text" name="Agama" class="form-control" value="{{ $pegawai->agama }}" disabled>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label>Jabatan</label>
-                      <input type="text" name="jabatan" class="form-control" value="Admin" disabled>
+                      <input type="text" name="jabatan" class="form-control" value="{{ $pegawai->jabatan }}" disabled>
                     </div>
                   </div>
                 </div>
@@ -159,7 +159,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                         <label>Jenis Kelamin</label>
-                        <input type="text" name="jabatan" class="form-control" value="Perempuan" disabled>
+                        <input type="text" name="jabatan" class="form-control" value="{{ $pegawai->jenis_kelamin }}" disabled>
                       </div>
                     </div>
                 </div>

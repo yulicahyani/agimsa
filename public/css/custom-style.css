@@ -5,3 +5,5 @@
 .bg-abu-putih {
     background-color: #fffdfd;
 }
+
+.hidetext { -webkit-text-security: disc; /* Default */ }
