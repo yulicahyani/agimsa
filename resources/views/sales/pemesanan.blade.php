@@ -50,11 +50,11 @@
   </div>
 
   <!-- Navbar -->
-  @include('admin.admin_layouts.nav-header')
+  @include('sales.sales_layouts.nav-header')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('admin.admin_layouts.sidebar')
+  @include('sales.sales_layouts.sidebar')
   <!-- /.Main Sidebar Container -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -68,7 +68,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/sales">Home</a></li>
               <li class="breadcrumb-item active">Pemesanan</li>
             </ol>
           </div><!-- /.col -->
@@ -84,19 +84,13 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-                <div class="row mt-3 ml-3">
-                  <div class="col-sm-4">
-                      <form action="\pemesanan">
-                          <div class="input-group w-75 input-group-sm">
-                              <input type="date" class="form-control form-control-sm">
-                              <div class="input-group-append">
-                                  <button type="submit" class="btn btn-sm btn-default">
-                                      <i class="fa fa-search"></i>
-                                  </button>
-                              </div>
-                          </div>
-                      </form>
-                  </div>
+                <div class="card-header">
+                    <a href="/tambah-pesanan-sales" class="btn btn-success" title='tambah'>
+                      <p class="mb-auto">
+                        Tambah Pesanan
+                        <i class='ion ion-person-add'></i>
+                      </p>
+                    </a>
                 </div>
   
               <!-- /.card-header -->
@@ -130,7 +124,7 @@
                     <td>Komang</td>
                     <td>Setuju</td>
                     <td>
-                      <a href="/edit-pemesanan" title='edit' class="btn btn-warning btn-sm">
+                      <a href="/edit-pesanan-sales" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
                       <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
@@ -150,7 +144,7 @@
                     <td>Komang</td>
                     <td>Setuju</td>
                     <td>
-                      <a href="/edit-pemesanan" title='edit' class="btn btn-warning btn-sm">
+                      <a href="/edit-pesanan-sales" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
                       <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
@@ -175,7 +169,7 @@
   <!-- /.content-wrapper -->
  
   <!-- footer -->
-  @include('admin.admin_layouts.footer')
+  @include('sales.sales_layouts.footer')
   <!-- /footer -->
 
 </div>

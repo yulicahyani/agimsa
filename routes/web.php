@@ -157,3 +157,51 @@ Route::get('/lihat-penjadwalan', function () {
     ]);
 });
 
+
+/* -----------Sales-----------------*/
+// Pegawai
+
+
+Route::get('/sales', function () {
+    return view('sales\dashboard', [
+        "title" => "Dashboard"
+    ]);
+});
+
+Route::get('/data-barang-sales', function () {
+    return view('sales\data-barang', [
+        "title" => "Data Barang"
+    ]);
+});
+
+Route::get('/pemesanan-sales', function () {
+    return view('sales\pemesanan', [
+        "title" => "Pemesanan"
+    ]);
+});
+
+Route::get('/tambah-pesanan-sales', function () {
+    return view('sales\tambah-pesanan', [
+        "title" => "Pemesanan"
+    ]);
+});
+
+Route::get('/edit-pesanan-sales', function () {
+    return view('sales\edit-pesanan', [
+        "title" => "Pemesanan"
+    ]);
+});
+
+Route::get('/jadwal-kunjungan', function () {
+    return view('sales\jadwal-kunjungan', [
+        "title" => "Jadwal Kunjungan"
+    ]);
+});
+
+Route::get('/target-penjualan', function () {
+    return view('sales\target-penjualan', [
+        "title" => "Target Penjualan"
+    ]);
+});
+
+
