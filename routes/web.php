@@ -75,8 +75,45 @@ Route::get('/target', function () {
     ]);
 });
 
+Route::get('/tambah-target', function () {
+    return view('admin\tambah-target', [
+        "title" => "Target"
+    ]);
+});
+
+Route::get('/lihat-target', function () {
+    return view('admin\lihat-target', [
+        "title" => "Target"
+    ]);
+});
+
+Route::get('/edit-target', function () {
+    return view('admin\edit-target', [
+        "title" => "Target"
+    ]);
+});
+
+
 Route::get('/pengiriman', function () {
     return view('admin\pengiriman', [
+        "title" => "Pengiriman"
+    ]);
+});
+
+Route::get('/tambah-pengiriman', function () {
+    return view('admin\tambah-pengiriman', [
+        "title" => "Pengiriman"
+    ]);
+});
+
+Route::get('/edit-pengiriman', function () {
+    return view('admin\edit-pengiriman', [
+        "title" => "Pengiriman"
+    ]);
+});
+
+Route::get('/lihat-pengiriman', function () {
+    return view('admin\lihat-pengiriman', [
         "title" => "Pengiriman"
     ]);
 });
@@ -86,4 +123,70 @@ Route::get('/penjadwalan', function () {
         "title" => "Penjadwalan"
     ]);
 });
+
+Route::get('/tambah-penjadwalan', function () {
+    return view('admin\tambah-penjadwalan', [
+        "title" => "Penjadwalan"
+    ]);
+});
+
+Route::get('/edit-penjadwalan', function () {
+    return view('admin\edit-penjadwalan', [
+        "title" => "Penjadwalan"
+    ]);
+});
+
+Route::get('/lihat-penjadwalan', function () {
+    return view('admin\lihat-penjadwalan', [
+        "title" => "Penjadwalan"
+    ]);
+});
+
+
+/* -----------Sales-----------------*/
+// Pegawai
+
+
+Route::get('/sales', function () {
+    return view('sales\dashboard', [
+        "title" => "Dashboard"
+    ]);
+});
+
+Route::get('/data-barang-sales', function () {
+    return view('sales\data-barang', [
+        "title" => "Data Barang"
+    ]);
+});
+
+Route::get('/pemesanan-sales', function () {
+    return view('sales\pemesanan', [
+        "title" => "Pemesanan"
+    ]);
+});
+
+Route::get('/tambah-pesanan-sales', function () {
+    return view('sales\tambah-pesanan', [
+        "title" => "Pemesanan"
+    ]);
+});
+
+Route::get('/edit-pesanan-sales', function () {
+    return view('sales\edit-pesanan', [
+        "title" => "Pemesanan"
+    ]);
+});
+
+Route::get('/jadwal-kunjungan', function () {
+    return view('sales\jadwal-kunjungan', [
+        "title" => "Jadwal Kunjungan"
+    ]);
+});
+
+Route::get('/target-penjualan', function () {
+    return view('sales\target-penjualan', [
+        "title" => "Target Penjualan"
+    ]);
+});
+
 

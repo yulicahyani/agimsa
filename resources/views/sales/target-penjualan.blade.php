@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title', 'pemesanan')</title>
+  <title>@yield('title', 'target penjualan')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -50,11 +50,11 @@
   </div>
 
   <!-- Navbar -->
-  @include('admin.admin_layouts.nav-header')
+  @include('sales.sales_layouts.nav-header')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('admin.admin_layouts.sidebar')
+  @include('sales.sales_layouts.sidebar')
   <!-- /.Main Sidebar Container -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -64,12 +64,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Pesanan</h1>
+            <h1 class="m-0">Target Penjualan Sales</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active">Pemesanan</li>
+              <li class="breadcrumb-item active">Target</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -84,79 +84,58 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-                <div class="row mt-3 ml-3">
-                  <div class="col-sm-4">
-                      <form action="\pemesanan">
-                          <div class="input-group w-75 input-group-sm">
-                              <input type="date" class="form-control form-control-sm">
-                              <div class="input-group-append">
-                                  <button type="submit" class="btn btn-sm btn-default">
-                                      <i class="fa fa-search"></i>
-                                  </button>
-                              </div>
-                          </div>
-                      </form>
-                  </div>
+
+              <div class="row mt-3 ml-3">
+                <div class="col-sm-3">
+                    <form action="\penjualan-baru">
+                        <div class="input-group input-group-sm">
+                          <select class="form-control select2" name="bulan" style="width: 80px%;">
+                              <option selected="selected">Periode</option>
+                              <option >Januari</option>
+                              <option>Februari</option>
+                              <option>Maret</option>
+                          </select>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-sm btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-  
-              <!-- /.card-header -->
+              </div>
+
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Customer</th>
-                    <th>Alamat</th>
+                    <th>Nama Pegawai</th>
                     <th>Tanggal</th>
-                    <th>Kode Barang</th>
-                    <th>Nama Barang</th>
-                    <th>Qty</th>
-                    <th>Pembelian</th>
-                    <th>Harga</th>
-                    <th>Sales</th>
-                    <th>Status</th>
-                    <th>Action</th>
+                    <th>Penjualan</th>
+                    <th>Persentase</th>
+                    <th>Target</th>
+                    <th>Komisi</th>
+                    <th>Keterangan</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Dyah Sari</td>
-                    <td>15/05/2022</td>
-                    <td>Ayani</td>
-                    <td>0101</td>
-                    <td>Hair Straight</td>
-                    <td>3</td>
-                    <td>Cash</td>
-                    <td>238.700</td>
-                    <td>Komang</td>
-                    <td>Setuju</td>
-                    <td>
-                      <a href="/edit-pemesanan" title='edit' class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i>
-                      </a>                                     
-                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                        <i class="far fa-trash-alt"></i>
-                      </a>
-                    </td>
+                    <td>Ketut Setiawan</td>
+                    <td>13/05/2022</td>
+                    <td>76.789.00</td>
+                    <td>1%</td>
+                    <td>100.000.000</td>
+                    <td>767.890</td>
+                    <td>Belum Tercapai</td>
                   </tr>
                   <tr>
                     <td>Dyah Sari</td>
-                    <td>15/05/2022</td>
-                    <td>Ayani</td>
-                    <td>0101</td>
-                    <td>Hair Straight</td>
-                    <td>3</td>
-                    <td>Cash</td>
-                    <td>238.700</td>
-                    <td>Komang</td>
-                    <td>Setuju</td>
-                    <td>
-                      <a href="/edit-pemesanan" title='edit' class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i>
-                      </a>                                     
-                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                        <i class="far fa-trash-alt"></i>
-                      </a>
-                    </td>
+                    <td>13/05/2022</td>
+                    <td>76.789.00</td>
+                    <td>1%</td>
+                    <td>100.000.000</td>
+                    <td>767.890</td>
+                    <td>Belum Tercapai</td>
                   </tr>
                 </table>
               </div>
@@ -175,7 +154,7 @@
   <!-- /.content-wrapper -->
  
   <!-- footer -->
-  @include('admin.admin_layouts.footer')
+  @include('sales.sales_layouts.footer')
   <!-- /footer -->
 
 </div>
@@ -215,7 +194,6 @@
 {{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
-
 
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('') }}assets/plugins/datatables/jquery.dataTables.min.js"></script>
