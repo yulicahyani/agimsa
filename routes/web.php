@@ -37,19 +37,11 @@ Route::match(['get', 'post'], '/edit-customer/{id}', [CustomerController::class,
 Route::match(['get', 'post'],  '/tambah-customer', [CustomerController::class, 'tambah_customer'])->name('tambah-customer');
 Route::post('/delete-customer', [CustomerController::class, 'delete_customer'])->name('delete-customer');
 
+//Pemesanan
+Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan');
+Route::match(['get', 'post'], '/edit-pemesanan/{id}', [PemesananController::class, 'edit_pemesanan'])->name('edit-pemesanan');
+Route::post('/delete-pemesanan', [PemesananController::class, 'delete_pemesanan'])->name('delete-pemesanan');
 
-
-Route::get('/pemesanan', function () {
-    return view('admin\pemesanan', [
-        "title" => "Pemesanan"
-    ]);
-});
-
-Route::get('/edit-pemesanan', function () {
-    return view('admin\edit-pemesanan', [
-        "title" => "Pemesanan"
-    ]);
-});
 
 Route::get('/penjualan-baru', function () {
     return view('admin\penjualan-baru', [

@@ -11,6 +11,7 @@ class Target extends Model
 
     protected $table = 'tb_target';
     protected $primaryKey = 'id_target';
+    public $timestamps = false;
 
     public function pegawai()
     {
