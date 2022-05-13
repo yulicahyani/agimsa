@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title', 'pemesanan')</title>
+  <title>@yield('title', 'lihat penjualan')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -64,12 +64,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">List Pesanan</h1>
+            <h1 class="m-0">Lihat Penjualan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
-              <li class="breadcrumb-item active">Pemesanan</li>
+              <li class="breadcrumb-item active">Jumlah Penjualan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -78,96 +78,114 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-                <div class="row mt-3 ml-3">
-                  <div class="col-sm-4">
-                      <form action="\pemesanan">
-                          <div class="input-group w-75 input-group-sm">
-                              <input type="date" class="form-control form-control-sm">
-                              <div class="input-group-append">
-                                  <button type="submit" class="btn btn-sm btn-default">
-                                      <i class="fa fa-search"></i>
-                                  </button>
-                              </div>
-                          </div>
-                      </form>
+ <!-- Main content -->
+ <section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+
+          <!-- /.card-header -->
+          <form action="\penjualan-baru">
+          <div class="card-body">
+            <table id="example2" class="table">
+              <tbody>
+              <tr>
+                <td>
+                  <div class="input-group input-group-sm">
+                    <label class="mr-2">Customer :</label>
+                    <input type="text" name="customer" class="form-control" value="Ayu" disabled>
                   </div>
-                </div>
-  
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>Customer</th>
-                    <th>Alamat</th>
-                    <th>Kode Barang</th>
-                    <th>Nama Barang</th>
-                    <th>Qty</th>
-                    <th>Pembelian</th>
-                    <th>Harga</th>
-                    <th>Sales</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Dyah Sari</td>
-                    <td>Ayani</td>
-                    <td>0101</td>
-                    <td>Hair Straight</td>
-                    <td>3</td>
-                    <td>Cash</td>
-                    <td>238.700</td>
-                    <td>Komang</td>
-                    <td>Setuju</td>
-                    <td>
-                      <a href="/edit-pemesanan" title='edit' class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i>
-                      </a>                                     
-                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                        <i class="far fa-trash-alt"></i>
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Dyah Sari</td>
-                    <td>Ayani</td>
-                    <td>0101</td>
-                    <td>Hair Straight</td>
-                    <td>3</td>
-                    <td>Cash</td>
-                    <td>238.700</td>
-                    <td>Komang</td>
-                    <td>Setuju</td>
-                    <td>
-                      <a href="/edit-pemesanan" title='edit' class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i>
-                      </a>                                     
-                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                        <i class="far fa-trash-alt"></i>
-                      </a>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
+                </td>
+                <td>
+                  <div class="input-group input-group-sm">
+                    <label class="mr-2">Sales :</label>
+                    <input type="text" name="sales" class="form-control" value="Ketut" disabled>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group input-group-sm">
+                    <label class="mr-2">Alamat :</label>
+                    <input type="text" name="customer" class="form-control" value="Jl. raya Canggu" disabled>
+                  </div>
+                </td>
+                <td>
+                  <div class="input-group input-group-sm">
+                    <label class="mr-2">No Faktur :</label>
+                    <input type="number" name="sales" class="form-control" value="117" disabled>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="input-group input-group-sm">
+                    <label class="mr-2">Tanggal :</label>
+                    <input type="text" name="tanggal" class="form-control" value="13/05/2022" disabled>
+                  </div>
+                </td>
+                <td>
+                </td>
+              </tr>
+              </tbody>
+            </table>
           </div>
-          <!-- /.col -->
+          </form>
+          <!-- /.card-body -->
+
+          <div class="card-body">
+            <table id="example1" class="table table-bordered">
+              <thead>
+              <tr>
+                <th>No</th>
+                <th>Kode Barang</th>
+                <th>Nama Barang</th>
+                <th>Quantity</th>
+                <th>Harga</th>
+                <th>Total Harga</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>1</td>
+                <td>0101</td>
+                <td>Hair Straight</td>
+                <td>3</td>
+                <td>217.000</td>
+                <td>2.604.000</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>0101</td>
+                <td>Hair Straight</td>
+                <td>3</td>
+                <td>217.000</td>
+                <td>2.604.000</td>
+              </tr>
+
+
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Jumlah Bayar</td>
+                <td>2.604.000</td>
+              </tr>
+            </table>
+          </div>
+          <!-- /.card-body -->
         </div>
-        <!-- /.row -->
+        <!-- /.card -->
       </div>
-      <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
  
@@ -213,7 +231,6 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
 
-
 <!-- DataTables  & Plugins -->
 <script src="{{ asset('') }}assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="{{ asset('') }}assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -230,10 +247,28 @@
 
 <script>
   $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    // $("#example1").DataTable({
+    //   "responsive": true, "lengthChange": false, "autoWidth": false, "info": false,"ordering": false,
+    //   "buttons": ["copy", "csv", "excel", "pdf", "print"]
+    // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example1').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
   });
 </script>
 </body>
