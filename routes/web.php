@@ -198,6 +198,18 @@ Route::get('/jadwal-kunjungan', function () {
     ]);
 });
 
+Route::get('/edit-jadwal', function () {
+    return view('sales\edit-jadwal', [
+        "title" => "Jadwal Kunjungan"
+    ]);
+});
+
+Route::get('/lihat-jadwal', function () {
+    return view('sales\lihat-jadwal', [
+        "title" => "Jadwal Kunjungan"
+    ]);
+});
+
 Route::get('/target-penjualan', function () {
     return view('sales\target-penjualan', [
         "title" => "Target Penjualan"

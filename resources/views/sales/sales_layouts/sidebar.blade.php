@@ -45,7 +45,7 @@
           </li>
           <li class="nav-item">
             <a href="/data-barang-sales" class="nav-link {{ ($title === "Data Barang")? 'active' : '' }}">
-              <i class="nav-icon fas fa-cart-plus"></i>
+              <i class="nav-icon fas fa-box-open"></i>
               <p>
                 Data Barang
               </p>
@@ -69,7 +69,7 @@
           </li>
           <li class="nav-item">
             <a href="/jadwal-kunjungan" class="nav-link {{ ($title === "Jadwal Kunjungan")? 'active' : '' }}">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-clock"></i>
               <p>
                 Jadwal Kunjungan
               </p>
