@@ -82,7 +82,7 @@
             <!-- small box -->
             <div class="small-box bg-info" style="height: 150px">
               <div class="inner">
-                <h3>4</h3>
+                <h3>{{ $countUser }}</h3>
 
                 <p>User</p>
               </div>
@@ -96,7 +96,7 @@
             <!-- small box -->
             <div class="small-box bg-success" style="height: 150px">
               <div class="inner">
-                <h3>4<sup style="font-size: 20px"></sup></h3>
+                <h3>{{ $countPenjualan }}<sup style="font-size: 20px"></sup></h3>
 
                 <p>Penjualan</p>
               </div>
@@ -110,7 +110,7 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="card mt-2 text-center bg-abu-putih" style="height: 250px">
-            <h1 class="my-auto">Selamat Datang Sales</h1>
+            <h1 class="my-auto">Selamat Datang {{ session('user')==null?'':session('user')->jabatan}}</h1>
         </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->

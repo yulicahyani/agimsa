@@ -11,7 +11,16 @@ class TargetController extends Controller
     
     public function index()
     {
-        //
+        if(session()->has('user') && session('user')->jabatan == 'Sales'){
+            $data = [
+                'title' => 'Target Penjualan',
+                'target' => Target::all()
+            ];
+    
+            return view('sales/target-penjualan', $data);
+        }else{
+            return redirect('/login');
+        }
     }
 
 }

@@ -95,6 +95,30 @@
   
               <!-- /.card-header -->
               <div class="card-body">
+
+                @if(session('success'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> BERHASIL!</h5>
+                    {{session('success')}}
+                </div>
+                @elseif(session('warning'))
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> GAGAL!</h5>
+                    {{session('warning')}}
+                </div>
+                @elseif(session('error'))
+                <div class="alert alert-danger alert-dismissible" style="margin-top: 30px;">
+                    <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> GAGAL!</h5>
+                    {{session('error')}}
+                </div>
+                @endif
+
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -112,46 +136,28 @@
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach ($pemesanan as $item)
                   <tr>
-                    <td>Dyah Sari</td>
-                    <td>15/05/2022</td>
-                    <td>Ayani</td>
-                    <td>0101</td>
-                    <td>Hair Straight</td>
-                    <td>3</td>
-                    <td>Cash</td>
-                    <td>238.700</td>
-                    <td>Komang</td>
-                    <td>Setuju</td>
+                    <td>{{ $item->nama_customer }}</td>
+                    <td>{{ $item->alamat }}</td>
+                    <td>{{ $item->tanggal_pesan }}</td>
+                    <td>{{ $item->kode_barang }}</td>
+                    <td>{{ $item->nama_barang }}</td>
+                    <td>{{ $item->qty }}</td>
+                    <td>{{ $item->pembayaran }}</td>
+                    <td>{{ $item->harga }}</td>
+                    <td>{{ $item->sales }}</td>
+                    <td>{{ $item->status }}</td>
                     <td>
-                      <a href="/edit-pesanan-sales" title='edit' class="btn btn-warning btn-sm">
+                      <a href="{{ route('edit-pemesanan-sales', ['id'=>$item->id_pemesanan]) }}" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
-                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="idPemesanan({{$item->id_pemesanan}})" title='Delete'>
                         <i class="far fa-trash-alt"></i>
                       </a>
                     </td>
                   </tr>
-                  <tr>
-                    <td>Dyah Sari</td>
-                    <td>15/05/2022</td>
-                    <td>Ayani</td>
-                    <td>0101</td>
-                    <td>Hair Straight</td>
-                    <td>3</td>
-                    <td>Cash</td>
-                    <td>238.700</td>
-                    <td>Komang</td>
-                    <td>Setuju</td>
-                    <td>
-                      <a href="/edit-pesanan-sales" title='edit' class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i>
-                      </a>                                     
-                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                        <i class="far fa-trash-alt"></i>
-                      </a>
-                    </td>
-                  </tr>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->
@@ -167,6 +173,57 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+
+  <!-- modal-delete -->
+  <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Peringatan! </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>Data Pemesanan akan dihapus. Anda yakin? </p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+              <button type="buttpn" class="btn btn-warning btn-delete-ask" data-dismiss="modal">
+                  Continue</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="modal-delete-confirm" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Peringatan! </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>Data Pemesanan yang terhubung dengan data lainnya juga akan dihapus. Anda
+                  yakin? </p>
+          </div>
+          <div class="modal-footer">
+              <form action="{{ route('delete-pemesanan-sales') }}" method="post">
+                  @csrf
+                  <input type="hidden" id="id_pemesanan" name="id_pemesanan">
+                  <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-danger btn-confirm-delete"> Delete</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
  
   <!-- footer -->
   @include('sales.sales_layouts.footer')
@@ -232,6 +289,17 @@
       "buttons": ["copy", "csv", "excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
+
+
+  function idPemesanan(id) {
+      console.log(id)
+      $('#modal-delete').modal('show')
+      $('#id_pemesanan').val(id)
+  }
+
+  $('body').on('click', '.btn-delete-ask', function () {
+      $('#modal-delete-confirm').modal('show')
+  })
 </script>
 </body>
 </html>

@@ -19,4 +19,14 @@ class DashboardController extends Controller
     
         return view('admin.dashboard',$data);
     }
+
+    public function index_sales(Request $request){
+        $data = [
+            'title'=>'Dashboard',
+            'countUser'=> Pegawai::all()->count(),
+            'countPenjualan'=> Penjualan::all()->count(),
+        ];
+    
+        return view('sales.dashboard',$data);
+    }
 }

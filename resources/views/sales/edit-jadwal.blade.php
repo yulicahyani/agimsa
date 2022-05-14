@@ -85,36 +85,50 @@
                   <!-- text input -->
                   <div class="form-group">
                     <label>Nama Customer</label>
-                    <select class="form-control select2" name="customer" style="width: 100%;">
-                        <option selected="selected">Dyah</option>
-                        <option>Ayu</option>
-                        <option>Krisna</option>
-                    </select>
-                    </div>
+                    <select class="form-control select2" name="id_customer" id="id_customer" required>
+                      @foreach ($customer as $item)
+                      <option value="{{ $item->id_customer }}"
+                          {{ $jadwal->id_customer==$item->id_customer ? 'selected' : '' }}>
+                          {{ $item->id_customer }} - {{ $item->nama_customer }} </option>
+                      @endforeach
+                  </select>
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" id="namacustomer" name="nama_customer"
+                      value="{{ $jadwal->nama_customer }} ">
+                </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
                       <label>Nama Sales</label>
-                      <select class="form-control select2" name="sales" style="width: 100%;">
-                          <option selected="selected">Ketut</option>
-                          <option>Bayu</option>
-                          <option>Kadek</option>
-                      </select>
+                      <select class="form-control select2" name="id_pegawai" id="id_pegawai" required>
+                        @foreach ($sales as $item)
+                        <option value="{{ $item->id_pegawai }}"
+                            {{ $jadwal->id_pegawai==$item->id_pegawai ? 'selected' : '' }}>
+                            {{ $item->id_pegawai }} - {{ $item->nama_pegawai }} </option>
+                        @endforeach
+                    </select>
                   </div>
+                  <div class="form-group">
+                    <input type="hidden" id="namapegawai" name="nama_pegawai"
+                      value="{{ $jadwal->nama_pegawai }} ">
+                </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
                       <label>Tanggal</label>
-                      <input type="date" name="tanggal" class="form-control" value="13/05/2022">
+                      <input type="date" name="tanggal" class="form-control" 
+                      value="{{ $jadwal->tanggal }}" required>
                     </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Daerah</label>
-                    <input type="text" name="daerah" class="form-control" value="Canggu">
+                    <input type="text" name="daerah" class="form-control" 
+                    value="{{ $jadwal->daerah }}" required>
                   </div>
                 </div>
               </div>
@@ -122,16 +136,19 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                       <label>Alamat</label>
-                      <input type="text" name="alamat" class="form-control" value="Jln. Raya Canggu">
+                      <input type="text" name="alamat" class="form-control" 
+                      value="{{ $jadwal->lokasi_kunjungan }}" required>
                     </div>
                 </div>
                 <div class="col-sm-6">
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Status</label>
-                    <select class="form-control select2" name="status" style="width: 100%;">
-                        <option selected="selected">Selesai</option>
-                        <option>Menunggu</option>
+                    <select class="form-control select2" name="status" required style="width: 100%;">
+                      <option value="setuju" {{ $jadwal->status=='Menunggu'?'selected':'' }}
+                        selected>Menunggu</option>
+                    <option value="Selesai" {{ $jadwal->status=='Selesai'?'selected':'' }}>Selesai
+                    </option>
                     </select>
                   </div>
                 </div>
@@ -140,7 +157,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                       <label>Keterangan</label>
-                      <textarea class="form-control" name="keterangan" rows="3"> Melakukan pengecekan barang customer</textarea>
+                      <textarea class="form-control" name="keterangan" rows="3"> {{ $jadwal->keterangan }}</textarea>
                     </div>
                 </div>
               </div>
@@ -202,6 +219,48 @@
 {{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
+
+<script>
+  $('#id_customer').on('select2:select', function (e) {
+    console.log($(this).val())
+    if ($(this).val() != '') {
+        $.ajax({
+            url: "{{ route('getDetailCustomer') }}",
+            method: 'GET',
+            data: {
+                customer: $(this).val()
+            },
+            success: function (data) {
+                console.log(data)
+                if (data['status'] == 200) {
+                    data = data['data'][0]
+                    $('#namacustomer').val(data['nama_customer'])
+                }
+            }
+        })
+    }
+  })
+
+  $('#id_pegawair').on('select2:select', function (e) {
+    console.log($(this).val())
+    if ($(this).val() != '') {
+        $.ajax({
+            url: "{{ route('getDetailCustomer') }}",
+            method: 'GET',
+            data: {
+                customer: $(this).val()
+            },
+            success: function (data) {
+                console.log(data)
+                if (data['status'] == 200) {
+                    data = data['data'][0]
+                    $('#namapegawai').val(data['nama_pegawai'])
+                }
+            }
+        })
+    }
+  })
+</script>
 
 </body>
 </html>

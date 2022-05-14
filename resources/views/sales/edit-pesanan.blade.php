@@ -29,7 +29,9 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
 
-  
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
@@ -80,30 +82,39 @@
         <!-- general form elements -->
         <div class="card">
         <!-- form start -->
-        <form>
+        <form method="POST">
+            @csrf
             <div class="card-body">
             <div class="row">
                 <div class="col-sm-4">
                 <!-- text input -->
                 <div class="form-group">
                     <label>Customer</label>
-                    <select class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Diah</option>
-                        <option>Ayu</option>
-                        <option>Krisna</option>
+                    <select class="form-control select2" name="id_customer" id="customer" required>
+                        @foreach ($customer as $item)
+                        <option value="{{ $item->id_customer }}"
+                            {{ $pemesanan->id_customer==$item->id_customer ? 'selected' : '' }}>
+                            {{ $item->id_customer }} - {{ $item->nama_customer }} </option>
+                        @endforeach
                     </select>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" id="namacustomer" name="nama_customer"
+                        value="{{ $pemesanan->nama_customer }} ">
                 </div>
                 </div>
                 <div class="col-sm-4">
                 <div class="form-group">
                     <label>Alamat</label>
-                    <input type="text" name="alamat" class="form-control" value="jln. Raya Canggu">
+                    <input type="text" name="alamat" class="form-control"
+                        value="{{ $pemesanan->alamat }}" required>
                 </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label>Tanggal</label>
-                        <input type="date" name="tanggal" class="form-control" value="11/02/2022">
+                        <input type="date" name="tanggal_pesan" class="form-control"
+                            value="{{ $pemesanan->tanggal_pesan }}">
                     </div>
                 </div>
             </div>
@@ -112,10 +123,13 @@
                 <!-- text input -->
                 <div class="form-group">
                     <label>Kode Barang</label>
-                    <select class="form-control select2" style="width: 100%;">
-                        <option selected="selected">01</option>
-                        <option>02</option>
-                        <option>03</option>
+                    <select class="form-control select2" style="width: 100%;" name="kode_barang"
+                        id="kodebarang" required>
+                        @foreach ($barang as $item)
+                        <option value="{{ $item->kode_barang }}"
+                            {{ $pemesanan->kode_barang==$item->kode_barang ? 'selected' : '' }}>
+                            {{ $item->kode_barang }} - {{ $item->nama_barang }} </option>
+                        @endforeach
                     </select>
                 </div>
                 </div>
@@ -123,14 +137,16 @@
                 <!-- textarea -->
                 <div class="form-group">
                     <label>Nama Barang</label>
-                    <input type="text" name="nama-barang" class="form-control" value="hair straight" disabled>
+                    <input type="text" name="nama_barang" id="namabarang" class="form-control"
+                        value="{{ $pemesanan->nama_barang }} " readonly>
                 </div>
                 </div>
                 <div class="col-sm-4">
                 <!-- textarea -->
                 <div class="form-group">
                     <label>Quantity</label>
-                    <input type="number" name="qty" class="form-control" value=1>
+                    <input type="number" name="qty" class="form-control"
+                        value="{{ $pemesanan->qty }}" required>
                 </div>
                 </div>
             </div>
@@ -139,23 +155,27 @@
                 <!-- textarea -->
                 <div class="form-group">
                     <label>Pembelian</label>
-                    <input type="text" name="pembelian" class="form-control" value="Cash">
+                    <input type="text" name="pembayaran" class="form-control"
+                    value="{{ $pemesanan->pembayaran }}" required>
                 </div>
                 </div>
                 <div class="col-sm-4">
                 <div class="form-group">
                     <label>Harga</label>
-                    <input type="text" name="harga" class="form-control" value="12345" disabled>
+                    <input type="text" name="harga" class="form-control"
+                        value="{{ $pemesanan->harga }}" required>
                 </div>
                 </div>
                 <div class="col-sm-4">
                 <!-- text input -->
                 <div class="form-group">
                     <label>Sales</label>
-                    <select class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Ketut</option>
-                        <option>Bayu</option>
-                        <option>Kadek</option>
+                    <select class="form-control select2" style="width: 100%;" name="sales" required>
+                        @foreach ($sales as $item)
+                        <option value="{{ $item->nama_pegawai }}"
+                            {{ $pemesanan->sales==$item->nama_pegawai?'selected':'' }}>
+                            {{ $item->nama_pegawai }} </option>
+                        @endforeach
                     </select>
                 </div>
                 </div>
@@ -165,10 +185,14 @@
                 <!-- text input -->
                 <div class="form-group">
                     <label>Status</label>
-                    <select class="form-control select2" style="width: 100%;">
-                        <option selected="selected">Setuju</option>
-                        <option>Tunda</option>
-                        <option>Selesai</option>
+                    <select class="form-control select2" style="width: 100%;" name="status"
+                        required>
+                        <option value="setuju" {{ $pemesanan->status=='setuju'?'selected':'' }}
+                            selected>Setuju</option>
+                        <option value="tunda" {{ $pemesanan->status=='tunda'?'selected':'' }}>Tunda
+                        </option>
+                        <option value="selesai" {{ $pemesanan->status=='selesai'?'selected':'' }}>
+                            Selesai</option>
                     </select>
                 </div>
                 </div>
@@ -232,6 +256,64 @@
 {{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
+
+
+{{-- Select2 --}}
+<script src="{{ asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+<script>
+    $(".select2").select2();
+        //Initialize Select2 Elements
+    $('.select2bs4').select2({
+    theme: 'bootstrap4'
+    })
+
+</script>
+
+<script>
+    $('#kodebarang').on('select2:select', function (e) {
+        console.log($(this).val())
+        if ($(this).val() != '') {
+            $.ajax({
+                url: "{{ route('getDetailBarang') }}",
+                method: 'GET',
+                data: {
+                    barang: $(this).val()
+                },
+                success: function (data) {
+                    console.log(data)
+                    if (data['status'] == 200) {
+                        data = data['data'][0]
+                        $('#namabarang').val(data['nama_barang'])
+                    }
+                }
+            })
+        }
+    })
+
+    $('#customer').on('select2:select', function (e) {
+        console.log($(this).val())
+        if ($(this).val() != '') {
+            $.ajax({
+                url: "{{ route('getDetailCustomer') }}",
+                method: 'GET',
+                data: {
+                    customer: $(this).val()
+                },
+                success: function (data) {
+                    console.log(data)
+                    if (data['status'] == 200) {
+                        data = data['data'][0]
+                        $('#namacustomer').val(data['nama_customer'])
+                    }
+                }
+            })
+        }
+    })
+
+</script>
 
 </body>
 </html>

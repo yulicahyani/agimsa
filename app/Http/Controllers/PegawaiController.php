@@ -153,5 +153,21 @@ class PegawaiController extends Controller
        
     }
 
+    public function detail_pegawai_by_id(Request $request){
+        $pegawai = Pegawai::where('id_pegawai', $request->pegawai)->get();
+
+        if(!$pegawai->isEmpty()){
+            $data = [
+                'status' => 200,
+                'data' =>  $pegawai
+            ];
+        }else{
+            $data = [
+                'status' => 500,
+            ];
+        }
+        return $data;
+    }
+
     
 }

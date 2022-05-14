@@ -126,62 +126,44 @@ Route::get('/lihat-penjadwalan', function () {
     ]);
 });
 
-
 /* -----------Sales-----------------*/
+//Dashboard
+Route::get('/sales', [DashboardController::class, 'index_sales'])->name('index_sales');
 
-Route::get('/sales', function () {
-    return view('sales\dashboard', [
-        "title" => "Dashboard"
-    ]);
-});
+//Pemesanan
+Route::get('/pemesanan-sales', [PemesananController::class, 'index_sales'])->name('pemesanan_sales');
+Route::match(['get', 'post'], '/edit-pesanan-sales/{id}', [PemesananController::class, 'edit_pemesanan_sales'])->name('edit-pemesanan-sales');
+Route::post('/delete-pemesanan-sales', [PemesananController::class, 'delete_pemesanan_sales'])->name('delete-pemesanan-sales');
+Route::get('/detail-customer', [CustomerController::class, 'detail_customer'])->name('getDetailCustomer');
+Route::get('/detail-barang', [BarangController::class, 'detail_barang'])->name('getDetailBarang');
+Route::match(['get', 'post'],  '/tambah-pesanan-sales', [PemesananController::class, 'tambah_pesanan'])->name('tambah-pesanan');
 
-Route::get('/data-barang-sales', function () {
-    return view('sales\data-barang', [
-        "title" => "Data Barang"
-    ]);
-});
 
-Route::get('/pemesanan-sales', function () {
-    return view('sales\pemesanan', [
-        "title" => "Pemesanan"
-    ]);
-});
+//Data Barang
+Route::get('/data-barang-sales', [BarangController::class, 'index'])->name('data_barang_sales');
 
-Route::get('/tambah-pesanan-sales', function () {
-    return view('sales\tambah-pesanan', [
-        "title" => "Pemesanan"
-    ]);
-});
+//Target Penjualan
+Route::get('/target-penjualan', [TargetController::class, 'index'])->name('target-penjualan');
 
-Route::get('/edit-pesanan-sales', function () {
-    return view('sales\edit-pesanan', [
-        "title" => "Pemesanan"
-    ]);
-});
+//Jadwal Kunjungan
+Route::get('/jadwal-kunjungan', [JadwalController::class, 'index_sales'])->name('jadwal-kunjungan');
+Route::match(['get', 'post'], '/edit-jadwal/{id}', [JadwalController::class, 'edit_jadwal_sales'])->name('edit-jadwal');
+Route::get('/detail-customer', [CustomerController::class, 'detail_customer'])->name('getDetailCustomer');
+Route::get('/detail-pegawai', [PegawaiController::class, 'detail_pegawai_by_id'])->name('getDetailPegawai');
+Route::post('/delete-jadwal', [JadwalController::class, 'delete_jadwal'])->name('delete-jadwal');
+Route::get('/lihat-jadwal/{id}', [JadwalController::class, 'lihat_jadwal'])->name('lihat-jadwal');
 
-Route::get('/jadwal-kunjungan', function () {
-    return view('sales\jadwal-kunjungan', [
-        "title" => "Jadwal Kunjungan"
-    ]);
-});
+// Route::get('/edit-jadwal', function () {
+//     return view('sales\edit-jadwal', [
+//         "title" => "Jadwal Kunjungan"
+//     ]);
+// });
 
-Route::get('/edit-jadwal', function () {
-    return view('sales\edit-jadwal', [
-        "title" => "Jadwal Kunjungan"
-    ]);
-});
-
-Route::get('/lihat-jadwal', function () {
-    return view('sales\lihat-jadwal', [
-        "title" => "Jadwal Kunjungan"
-    ]);
-});
-
-Route::get('/target-penjualan', function () {
-    return view('sales\target-penjualan', [
-        "title" => "Target Penjualan"
-    ]);
-});
+// Route::get('/lihat-jadwal', function () {
+//     return view('sales\lihat-jadwal', [
+//         "title" => "Jadwal Kunjungan"
+//     ]);
+// });
 
 
 /* -----------Gudang-----------------*/

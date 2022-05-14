@@ -97,20 +97,15 @@
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach ($barang as $key=>$item)
                   <tr>
-                    <td>1</td>
-                    <td>0101</td>
-                    <td>Hair Straight</td>
-                    <td>360</td>
-                    <td>Hahanico</td>
+                    <td>{{ $key+1}}</td>
+                    <td>{{ $item->kode_barang }}</td>
+                    <td>{{ $item->nama_barang }}</td>
+                    <td>{{ $item->jumlah_stok }}</td>
+                    <td>{{ $item->merk }}</td>
                   </tr>
-                  <tr>
-                    <td>1</td>
-                    <td>0101</td>
-                    <td>Hair Straight</td>
-                    <td>360</td>
-                    <td>Hahanico</td>
-                  </tr>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->

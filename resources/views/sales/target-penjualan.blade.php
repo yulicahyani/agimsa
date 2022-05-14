@@ -34,6 +34,10 @@
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+   <!-- Select2 -->
+   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2/css/select2.min.css">
+   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
   @endpush
@@ -89,11 +93,20 @@
                 <div class="col-sm-3">
                     <form action="\penjualan-baru">
                         <div class="input-group input-group-sm">
-                          <select class="form-control select2" name="bulan" style="width: 80px%;">
-                              <option selected="selected">Periode</option>
-                              <option >Januari</option>
-                              <option>Februari</option>
-                              <option>Maret</option>
+                          <select class="form-control select2" name="bulan" style="width: 150px;">
+                              <option  value='' selected="selected">Periode</option>
+                              <option value=1>Januari</option>
+                              <option value=2>Februari</option>
+                              <option value=3>Maret</option>
+                              <option value=4>April</option>
+                              <option value=5>Mei</option>
+                              <option value=6>Juni</option>
+                              <option value=7>Juli</option>
+                              <option value=8>Agustus</option>
+                              <option value=9>September</option>
+                              <option value=10>Oktober</option>
+                              <option value=11>November</option>
+                              <option value=12>Desember</option>
                           </select>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-default">
@@ -112,31 +125,27 @@
                     <th>Nama Pegawai</th>
                     <th>Tanggal</th>
                     <th>Penjualan</th>
-                    <th>Persentase</th>
+                    <th>Persentase (%)</th>
                     <th>Target</th>
                     <th>Komisi</th>
                     <th>Keterangan</th>
                   </tr>
                   </thead>
                   <tbody>
+                    @foreach ($target as $item)
+                      @php
+                          $komisi = ((int) $item->persentase * $item->penjualan)/100;
+                      @endphp
                   <tr>
-                    <td>Ketut Setiawan</td>
-                    <td>13/05/2022</td>
-                    <td>76.789.00</td>
-                    <td>1%</td>
+                    <td>{{ $item->nama_sales }}</td>
+                    <td>{{ $item->tanggal }}</td>
+                    <td>{{ $item->penjualan }}</td>
+                    <td>{{ $item->persentase }}</td>
                     <td>100.000.000</td>
-                    <td>767.890</td>
-                    <td>Belum Tercapai</td>
+                    <td>{{ $komisi }}</td>
+                    <td>{{ $item->persentase }}</td>
                   </tr>
-                  <tr>
-                    <td>Dyah Sari</td>
-                    <td>13/05/2022</td>
-                    <td>76.789.00</td>
-                    <td>1%</td>
-                    <td>100.000.000</td>
-                    <td>767.890</td>
-                    <td>Belum Tercapai</td>
-                  </tr>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->
@@ -217,5 +226,61 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
+
+
+{{-- Select2 --}}
+<script src="{{ asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+<script>
+    $(".select2").select2();
+        //Initialize Select2 Elements
+    $('.select2bs4').select2({
+    theme: 'bootstrap4'
+    })
+
+</script>
+
+<script>
+    $('#kodebarang').on('select2:select', function (e) {
+        console.log($(this).val())
+        if ($(this).val() != '') {
+            $.ajax({
+                url: "{{ route('getDetailBarang') }}",
+                method: 'GET',
+                data: {
+                    barang: $(this).val()
+                },
+                success: function (data) {
+                    console.log(data)
+                    if (data['status'] == 200) {
+                        data = data['data'][0]
+                        $('#namabarang').val(data['nama_barang'])
+                    }
+                }
+            })
+        }
+    })
+
+    $('#customer').on('select2:select', function (e) {
+        console.log($(this).val())
+        if ($(this).val() != '') {
+            $.ajax({
+                url: "{{ route('getDetailCustomer') }}",
+                method: 'GET',
+                data: {
+                    customer: $(this).val()
+                },
+                success: function (data) {
+                    console.log(data)
+                    if (data['status'] == 200) {
+                        data = data['data'][0]
+                        $('#namacustomer').val(data['nama_customer'])
+                    }
+                }
+            })
+        }
+    })
 </body>
 </html>

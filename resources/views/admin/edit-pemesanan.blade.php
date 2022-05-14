@@ -33,6 +33,9 @@
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2/css/select2.min.css">
+      <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 
     @push('styles')
@@ -260,8 +263,14 @@
     <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
     {{-- Select2 --}}
     <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
     <script>
         $(".select2").select2();
+            //Initialize Select2 Elements
+        $('.select2bs4').select2({
+        theme: 'bootstrap4'
+        })
 
     </script>
 

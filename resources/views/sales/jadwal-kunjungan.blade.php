@@ -97,40 +97,25 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @foreach ($jadwal as $item)
                     <tr>
-                      <td>0001</td>
-                      <td>Mengwi</td>
-                      <td>12/01/2021</td>
-                      <td>Selesai</td>
+                      <td>{{ $item->id_kunjungan  }}</td>
+                      <td>{{ $item->daerah  }}</td>
+                      <td>{{ $item->tanggal  }}</td>
+                      <td>{{ $item->status  }}</td>
                       <td>
-                        <a href="/lihat-jadwal" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                        <a href="{{ route('lihat-jadwal', ['id'=>$item->id_kunjungan]) }}" class="btn btn-info btn-sm btn-status" title='Lihat'>
                           <i class='fa fa-eye'></i>
                         </a>
-                        <a href="/edit-jadwal" title='edit' class="btn btn-warning btn-sm">
+                        <a href="{{ route('edit-jadwal', ['id'=>$item->id_kunjungan]) }}" title='edit' class="btn btn-warning btn-sm">
                           <i class="fa fa-edit"></i>
                         </a>                                     
-                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="idJadwal({{$item->id_kunjungan}})" title='Delete'>
                           <i class="far fa-trash-alt"></i>
                         </a>
                       </td>
                     </tr>
-                    <tr>
-                      <td>0001</td>
-                      <td>Mengwi</td>
-                      <td>12/01/2021</td>
-                      <td>Selesai</td>
-                      <td>
-                        <a href="/lihat-jadwal" class="btn btn-info btn-sm btn-status" title='Lihat'>
-                          <i class='fa fa-eye'></i>
-                        </a>
-                        <a href="/edit-jadwal" title='edit' class="btn btn-warning btn-sm">
-                          <i class="fa fa-edit"></i>
-                        </a>                                     
-                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                          <i class="far fa-trash-alt"></i>
-                        </a>
-                      </td>
-                    </tr>
+                    @endforeach
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -146,6 +131,56 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <!-- modal-delete -->
+    <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Peringatan! </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Data Jadwal Kunjungan akan dihapus. Anda yakin? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                <button type="buttpn" class="btn btn-warning btn-delete-ask" data-dismiss="modal">
+                    Continue</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modal-delete-confirm" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Peringatan! </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Data Jadwal Kunjungan yang terhubung dengan data lainnya juga akan dihapus. Anda
+                    yakin? </p>
+            </div>
+            <div class="modal-footer">
+                <form action="{{ route('delete-jadwal') }}" method="post">
+                    @csrf
+                    <input type="hidden" id="id_kunjungan" name="id_kunjungan">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger btn-confirm-delete"> Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
    
     <!-- footer -->
     @include('sales.sales_layouts.footer')
@@ -210,6 +245,18 @@
         "buttons": ["copy", "csv", "excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
+
+
+    function idJadwal(id) {
+      console.log(id)
+      $('#modal-delete').modal('show')
+      $('#id_kunjungan').val(id)
+    }
+
+    $('body').on('click', '.btn-delete-ask', function () {
+        $('#modal-delete-confirm').modal('show')
+    })
+
   </script>
 </body>
 </html>
