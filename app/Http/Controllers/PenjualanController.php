@@ -11,7 +11,15 @@ class PenjualanController extends Controller
     
     public function index()
     {
-        //
+        if(session()->has('user') && session('user')->jabatan == 'Admin'){
+            $data = [
+                'title' => 'Penjualan Baru',
+            ];
+    
+            return view('admin/penjualan-baru', $data);
+        }else{
+            return redirect('/login');
+        }
     }
 
    

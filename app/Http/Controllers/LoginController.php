@@ -24,6 +24,22 @@ class LoginController extends Controller
 
         if(count($user)>0){
             $request->session()->put('user', $user[0]);
+
+            if ( session('user')['jabatan'] == 'Admin'){
+                return redirect('/');
+            }
+
+            if ( session('user')['jabatan'] == 'Sales'){
+                return redirect('/sales');
+            }
+
+            if ( session('user')['jabatan'] == 'Gudang'){
+                return redirect('/gudang');
+            }
+
+            if ( session('user')['jabatan'] == 'Pimpinan'){
+                return redirect('/pimpinan');
+            }
             return redirect('/');
         }
 

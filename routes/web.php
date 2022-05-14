@@ -45,11 +45,9 @@ Route::post('/delete-pemesanan', [PemesananController::class, 'delete_pemesanan'
 Route::get('/detail-customer', [CustomerController::class, 'detail_customer'])->name('getDetailCustomer');
 Route::get('/detail-barang', [BarangController::class, 'detail_barang'])->name('getDetailBarang');
 
-Route::get('/penjualan-baru', function () {
-    return view('admin\penjualan-baru', [
-        "title" => "Penjualan Baru"
-    ]);
-});
+//Penjualan
+Route::match(['get', 'post'], '/penjualan-baru', [PenjualanController::class, 'index'])->name('penjualan-baru');
+
 
 Route::get('/jumlah-penjualan', function () {
     return view('admin\jumlah-penjualan', [
