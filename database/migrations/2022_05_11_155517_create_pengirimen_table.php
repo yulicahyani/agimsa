@@ -15,7 +15,7 @@ class CreatePengirimenTable extends Migration
     {
         Schema::create('tb_pengiriman', function (Blueprint $table) {
             $table->id('id_pengiriman');
-            $table->string('nama_pengirim'. 100);
+            $table->string('nama_pengirim', 100);
             $table->date('tgl_kirim');
             $table->string('alamat', 100);
             $table->string('status', 100);

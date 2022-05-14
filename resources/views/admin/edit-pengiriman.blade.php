@@ -78,20 +78,21 @@
         <!-- general form elements -->
         <div class="card">
           <!-- form start -->
-          <form>
+          <form method="POST">
+            @csrf
             <div class="card-body">
               <div class="row mt-4">
                 <div class="col-sm-6">
                   <!-- text input -->
                   <div class="form-group">
                     <label>Nama Pengirim</label>
-                    <input type="text" name="pengirim" class="form-control" value="Bayu">
+                    <input type="text" name="nama_pengirim" class="form-control" value=" {{$pengiriman->nama_pengirim}}" required>
                 </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="date" name="tanggal" class="form-control" value="13/05/2022">
+                    <input type="date" name="tgl_kirim" class="form-control" value="{{$pengiriman->tgl_kirim}}" required>
                   </div>
                 </div>
               </div>
@@ -100,16 +101,16 @@
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Alamat</label>
-                    <input type="text" name="alamat" class="form-control" value="Jl. Raya Canggu">
+                    <input type="text" name="alamat" class="form-control" value="{{$pengiriman->alamat }}" required>
                   </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Status</label>
-                      <select class="form-control select2" name="status" style="width: 100%;">
-                          <option selected="selected">Terkirim</option>
-                          <option>Tidak Terkirim</option>
+                      <select class="form-control select2" name="status" style="width: 100%;" required>
+                        <option {{ $pengiriman->status=='Tidak Terkirim'? 'selected': '' }} >Tidak Terkirim</option>
+                        <option {{ $pengiriman->status=='Terkirim'? 'selected': '' }} >Terkirim</option>
                       </select>
                     </div>
                   </div>

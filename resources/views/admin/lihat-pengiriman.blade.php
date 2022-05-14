@@ -85,13 +85,13 @@
                   <!-- text input -->
                   <div class="form-group">
                     <label>Nama Pengirim</label>
-                    <input type="text" name="pengirim" class="form-control" value="Bayu" disabled>
+                    <input type="text" name="pengirim" class="form-control" value=" {{$pengiriman->nama_pengirim}} " disabled>
                 </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="text" name="tanggal" class="form-control" value="13/05/2022" disabled>
+                    <input type="text" name="tanggal" class="form-control" value=" {{$pengiriman->tgl_kirim}} " disabled>
                   </div>
                 </div>
               </div>
@@ -100,7 +100,7 @@
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Alamat</label>
-                    <input type="text" name="alamat" class="form-control" value="Jl. Raya Canggu" disabled>
+                    <input type="text" name="alamat" class="form-control" value="{{$pengiriman->alamat}}" disabled>
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -108,8 +108,8 @@
                     <div class="form-group">
                       <label>Status</label>
                       <select class="form-control select2" name="status" style="width: 100%;" disabled>
-                          <option selected="selected">Terkirim</option>
-                          <option>Tidak Terkirim</option>
+                          <option {{ $pengiriman->status=='Tidak Terkirim'? 'selected': '' }} >Tidak Terkirim</option>
+                          <option {{ $pengiriman->status=='Terkirim'? 'selected': '' }} >Terkirim</option>
                       </select>
                     </div>
                   </div>

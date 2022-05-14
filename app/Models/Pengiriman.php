@@ -12,4 +12,4 @@ class Pengiriman extends Model
     protected $table = 'tb_pengiriman';
     protected $primaryKey = 'id_pengiriman';
     public $timestamps = false;
-}
+}   

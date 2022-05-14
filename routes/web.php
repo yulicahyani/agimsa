@@ -78,11 +78,11 @@ Route::get('/edit-target', function () {
 });
 
 
-Route::get('/pengiriman', function () {
-    return view('admin\pengiriman', [
-        "title" => "Pengiriman"
-    ]);
-});
+Route::get('/pengiriman', [PengirimanController::class, 'index'])->name('pengiriman');
+Route::match(['get', 'post'], '/tambah-pengiriman', [PengirimanController::class, 'tambah_pengiriman'])->name('tambah-pengiriman');
+Route::match(['get', 'post'], '/edit-pengiriman/{id}', [PengirimanController::class, 'edit_pengiriman'])->name('edit-pengiriman');
+Route::get('/lihat-pengiriman/{id}', [PengirimanController::class, 'lihat_pengiriman'])->name('lihat-pengiriman');
+Route::post('/delete-pengiriman', [PengirimanController::class, 'delete_pengiriman'])->name('delete-pengiriman');
 
 Route::get('/tambah-pengiriman', function () {
     return view('admin\tambah-pengiriman', [
