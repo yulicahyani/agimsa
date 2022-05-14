@@ -23,6 +23,7 @@ class CreateJadwalsTable extends Migration
             $table->string('lokasi_kunjungan', 100);
             $table->date('tanggal');
             $table->string('keterangan', 100);
+            $table->string('status', 100);
         });  
 
         Schema::table('tb_jadwal', function (Blueprint $table) {

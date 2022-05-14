@@ -12,7 +12,16 @@ class BarangController extends Controller
     
     public function index()
     {
-        
+        if(session()->has('user') && session('user')->jabatan == 'Sales'){
+            $data = [
+                'title' => 'Data Barang',
+                'barang' => Barang::all()
+            ];
+    
+            return view('sales/data-barang', $data);
+        }else{
+            return redirect('/login');
+        }
     }
 
     public function detail_barang(Request $request){

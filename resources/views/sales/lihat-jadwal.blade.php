@@ -98,42 +98,42 @@
                     <tr style="height: 50px">
                       <td>ID. Kunjungan :</td>
                       <td style="width: 50px"></td>
-                      <td>0001</td>
+                      <td>{{ $jadwal->id_kunjungan }}</td>
                     </tr>
                     <tr style="height: 50px">
                       <td>Nama Customer :</td>
                       <td></td>
-                      <td>Dyah</td>
+                      <td>{{ $jadwal->nama_customer }}</td>
                     </tr>
                     <tr style="height: 50px">
                         <td>Nama Sales :</td>
                         <td></td>
-                        <td>Bayu</td>
+                        <td>{{ $jadwal->nama_pegawai }}</td>
                     </tr>
                     <tr style="height: 50px">
                         <td>Tanggal :</td>
                         <td></td>
-                        <td>12/05/2022</td>
+                        <td>{{ $jadwal->tanggal }}</td>
                     </tr>
                     <tr style="height: 50px">
                         <td>Daerah :</td>
                         <td></td>
-                        <td>Canggu</td>
+                        <td>{{ $jadwal->daerah }}</td>
                     </tr>
                     <tr style="height: 50px">
                         <td>Alamat :</td>
                         <td></td>
-                        <td>Jl. Raya Canggu</td>
+                        <td>{{ $jadwal->lokasi_kunjungan }}</td>
                     </tr>
                     <tr style="height: 50px">
                         <td>Status :</td>
                         <td></td>
-                        <td>Selesai</td>
+                        <td>{{ $jadwal->status }}</td>
                     </tr>
                     <tr style="height: 60px">
                         <td>Keterangan :</td>
                         <td></td>
-                        <td>Melakukan pengecekan barang customer</td>
+                        <td>{{ $jadwal->keterangan }}</td>
                     </tr>
                   </table>
                 </div>
