@@ -136,8 +136,6 @@ Route::get('/lihat-penjadwalan', function () {
 
 
 /* -----------Sales-----------------*/
-// Pegawai
-
 
 Route::get('/sales', function () {
     return view('sales\dashboard', [
@@ -194,3 +192,54 @@ Route::get('/target-penjualan', function () {
 });
 
 
+/* -----------Gudang-----------------*/
+
+Route::get('/gudang', function () {
+    return view('gudang\dashboard', [
+        "title" => "Dashboard"
+    ]);
+});
+
+Route::get('/data-barang-gudang', function () {
+    return view('gudang\data-barang', [
+        "title" => "Data Barang"
+    ]);
+});
+
+Route::get('/stok-barang', function () {
+    return view('gudang\stok-barang', [
+        "title" => "Stok Barang"
+    ]);
+});
+
+Route::get('/pengeluaran-barang', function () {
+    return view('gudang\pengeluaran-barang', [
+        "title" => "Pengeluaran Barang"
+    ]);
+});
+
+/* -----------Gudang-----------------*/
+
+Route::get('/pimpinan', function () {
+    return view('pimpinan\dashboard', [
+        "title" => "Dashboard"
+    ]);
+});
+
+Route::get('/laporan-pegawai', function () {
+    return view('pimpinan\laporan-pegawai', [
+        "title" => "Laporan Pegawai"
+    ]);
+});
+
+Route::get('/laporan-penjualan', function () {
+    return view('pimpinan\laporan-penjualan', [
+        "title" => "Laporan Penjualan"
+    ]);
+});
+
+Route::get('/laporan-data-barang', function () {
+    return view('pimpinan\laporan-data-barang', [
+        "title" => "Laporan Data Barang"
+    ]);
+});
