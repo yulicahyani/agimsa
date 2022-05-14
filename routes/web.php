@@ -11,6 +11,7 @@ use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PengirimanController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\TargetController;
+use App\Http\Controllers\BarangController;
 
 
 /* Dashboard */
@@ -41,7 +42,8 @@ Route::post('/delete-customer', [CustomerController::class, 'delete_customer'])-
 Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan');
 Route::match(['get', 'post'], '/edit-pemesanan/{id}', [PemesananController::class, 'edit_pemesanan'])->name('edit-pemesanan');
 Route::post('/delete-pemesanan', [PemesananController::class, 'delete_pemesanan'])->name('delete-pemesanan');
-
+Route::get('/detail-customer', [CustomerController::class, 'detail_customer'])->name('getDetailCustomer');
+Route::get('/detail-barang', [BarangController::class, 'detail_barang'])->name('getDetailBarang');
 
 Route::get('/penjualan-baru', function () {
     return view('admin\penjualan-baru', [
