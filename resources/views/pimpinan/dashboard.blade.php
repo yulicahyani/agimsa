@@ -45,11 +45,11 @@
   </div>
 
   <!-- Navbar -->
-  @include('gudang.gudang_layouts.nav-header')
+  @include('pimpinan.pimpinan_layouts.nav-header')
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  @include('gudang.gudang_layouts.sidebar')
+  @include('pimpinan.pimpinan_layouts.sidebar')
   <!-- /.Main Sidebar Container -->
 
   <!-- Content Wrapper. Contains page content -->
@@ -108,7 +108,7 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="card mt-2 text-center bg-abu-putih" style="height: 250px">
-            <h1 class="my-auto">Selamat Datang Gudang</h1>
+            <h1 class="my-auto">Selamat Datang Pimpinan</h1>
         </div>
         <!-- /.row (main row) -->
       </div><!-- /.container-fluid -->
@@ -120,7 +120,7 @@
   <!-- /.content-wrapper -->
  
   <!-- footer -->
-  @include('gudang.gudang_layouts.footer')
+  @include('pimpinan.pimpinan_layouts.footer')
   <!-- /footer -->
 
 </div>
