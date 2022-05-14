@@ -13,9 +13,22 @@ use App\Http\Requests\UpdatePemesananRequest;
 class PemesananController extends Controller
 {
    
-    public function index()
+    public function index(Request $request)
     {
         if(session()->has('user') && session('user')->jabatan == 'Admin'){
+
+            if($request->isMethod('POST')){
+                $post = $request->validate([
+                    'tanggal_pesan'=> 'required'
+                ]);
+                $pemesanan = Pemesanan::where('tanggal_pesan', $post['tanggal_pesan'])->get();
+                $data = [
+                    'title' => 'Pemesanan',
+                    'pemesanan' => $pemesanan
+                ];
+                return view('admin/pemesanan', $data);
+            }
+            
             $data = [
                 'title' => 'Pemesanan',
                 'pemesanan' => Pemesanan::all()

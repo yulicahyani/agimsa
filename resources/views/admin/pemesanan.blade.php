@@ -91,9 +91,10 @@
                             <div class="card">
                                 <div class="row mt-3 ml-3">
                                     <div class="col-sm-4">
-                                        <form action="\pemesanan">
+                                        <form action="" method="POST">
+                                            @csrf
                                             <div class="input-group w-75 input-group-sm">
-                                                <input type="date" class="form-control form-control-sm">
+                                                <input type="date" class="form-control form-control-sm" name="tanggal_pesan">
                                                 <div class="input-group-append">
                                                     <button type="submit" class="btn btn-sm btn-default">
                                                         <i class="fa fa-search"></i>
