@@ -39,7 +39,7 @@ Route::match(['get', 'post'],  '/tambah-customer', [CustomerController::class, '
 Route::post('/delete-customer', [CustomerController::class, 'delete_customer'])->name('delete-customer');
 
 //Pemesanan
-Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan');
+Route::match(['get', 'post'], '/pemesanan', [PemesananController::class, 'index'])->name('pemesanan');
 Route::match(['get', 'post'], '/edit-pemesanan/{id}', [PemesananController::class, 'edit_pemesanan'])->name('edit-pemesanan');
 Route::post('/delete-pemesanan', [PemesananController::class, 'delete_pemesanan'])->name('delete-pemesanan');
 Route::get('/detail-customer', [CustomerController::class, 'detail_customer'])->name('getDetailCustomer');
@@ -47,19 +47,11 @@ Route::get('/detail-barang', [BarangController::class, 'detail_barang'])->name('
 
 //Penjualan
 Route::match(['get', 'post'], '/penjualan-baru', [PenjualanController::class, 'index'])->name('penjualan-baru');
+Route::post('/tambah-penjualan', [PenjualanController::class, 'tambah_penjualan'])->name('tambah-penjualan');
+Route::get('/jumlah-penjualan', [PenjualanController::class, 'jumlah_penjualan'])->name('jumlah-penjualan');
+Route::get('/lihat-penjualan/{faktur}', [PenjualanController::class, 'lihat_penjualan'])->name('lihat-penjualan');
+Route::post('/delete-penjualan', [PenjualanController::class, 'delete_penjualan'])->name('delete-penjualan');
 
-
-Route::get('/jumlah-penjualan', function () {
-    return view('admin\jumlah-penjualan', [
-        "title" => "Jumlah Penjualan"
-    ]);
-});
-
-Route::get('/lihat-penjualan', function () {
-    return view('admin\lihat-penjualan', [
-        "title" => "Jumlah Penjualan"
-    ]);
-});
 
 Route::get('/target', function () {
     return view('admin\target', [
