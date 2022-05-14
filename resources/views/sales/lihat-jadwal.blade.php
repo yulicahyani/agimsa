@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title', 'jadwal kunjungan')</title>
+  <title>@yield('title', 'Detail Jadwal')</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -42,7 +42,7 @@
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+<div class="wrapper mb-3">
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
@@ -64,11 +64,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Jadwal Kunjungan Sales</h1>
+            <h1 class="m-0">Detail Jadwal</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="/sales">Home</a></li>
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item active">Jadwal Kunjungan</li>
             </ol>
           </div><!-- /.col -->
@@ -86,54 +86,64 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <table id="example1" class="table table-bordered table-striped">
+                  <table id="example1" class="">
                     <thead>
-                    <tr>
-                      <th>ID.Kunjungan</th>
-                      <th>Daerah</th>
-                      <th>Tanggal</th>
-                      <th>Status</th>
-                      <th>Aksi</th>
+                    <tr class="text-white">
+                      <th></th>
+                      <th></th>
+                      <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
+                    <tr style="height: 50px">
+                      <td>ID. Kunjungan :</td>
+                      <td style="width: 50px"></td>
                       <td>0001</td>
-                      <td>Mengwi</td>
-                      <td>12/01/2021</td>
-                      <td>Selesai</td>
-                      <td>
-                        <a href="/lihat-jadwal" class="btn btn-info btn-sm btn-status" title='Lihat'>
-                          <i class='fa fa-eye'></i>
-                        </a>
-                        <a href="/edit-jadwal" title='edit' class="btn btn-warning btn-sm">
-                          <i class="fa fa-edit"></i>
-                        </a>                                     
-                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                          <i class="far fa-trash-alt"></i>
-                        </a>
-                      </td>
                     </tr>
-                    <tr>
-                      <td>0001</td>
-                      <td>Mengwi</td>
-                      <td>12/01/2021</td>
-                      <td>Selesai</td>
-                      <td>
-                        <a href="/lihat-jadwal" class="btn btn-info btn-sm btn-status" title='Lihat'>
-                          <i class='fa fa-eye'></i>
-                        </a>
-                        <a href="/edit-jadwal" title='edit' class="btn btn-warning btn-sm">
-                          <i class="fa fa-edit"></i>
-                        </a>                                     
-                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                          <i class="far fa-trash-alt"></i>
-                        </a>
-                      </td>
+                    <tr style="height: 50px">
+                      <td>Nama Customer :</td>
+                      <td></td>
+                      <td>Dyah</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>Nama Sales :</td>
+                        <td></td>
+                        <td>Bayu</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>Tanggal :</td>
+                        <td></td>
+                        <td>12/05/2022</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>Daerah :</td>
+                        <td></td>
+                        <td>Canggu</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>Alamat :</td>
+                        <td></td>
+                        <td>Jl. Raya Canggu</td>
+                    </tr>
+                    <tr style="height: 50px">
+                        <td>Status :</td>
+                        <td></td>
+                        <td>Selesai</td>
+                    </tr>
+                    <tr style="height: 60px">
+                        <td>Keterangan :</td>
+                        <td></td>
+                        <td>Melakukan pengecekan barang customer</td>
                     </tr>
                   </table>
                 </div>
                 <!-- /.card-body -->
+
+                <div class="card-footer">
+                    <a href="/jadwal-kunjungan" class="btn btn-primary" title='back'>
+                        Kembali
+                    </a>
+                  </div>
               </div>
               <!-- /.card -->
             </div>
@@ -147,9 +157,6 @@
     </div>
     <!-- /.content-wrapper -->
    
-    <!-- footer -->
-    @include('sales.sales_layouts.footer')
-    <!-- /footer -->
   
   </div>
   <!-- ./wrapper -->
@@ -206,8 +213,9 @@
   <script>
     $(function () {
       $("#example1").DataTable({
-        "responsive": true, "lengthChange": false, "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print"]
+        "responsive": true, "lengthChange": false, "autoWidth": false, "info": false, "paging":false, "searching": false,
+      "ordering": false,
+        "buttons": ["copy", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
   </script>
