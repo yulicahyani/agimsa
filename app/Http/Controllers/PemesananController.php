@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pemesanan;
+use App\Models\Barang;
+use App\Models\Customer;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePemesananRequest;
 use App\Http\Requests\UpdatePemesananRequest;
@@ -30,11 +33,51 @@ class PemesananController extends Controller
             
             $pemesanan = Pemesanan::find($id);
             
+            if( $request->isMethod('POST')){
+                
+                $post = $request->validate([
+                    'id_customer' => 'required',
+                    'nama_customer' => 'required',
+                    'alamat' => 'required',
+                    'kode_barang' => 'required',
+                    'nama_barang' => 'required',
+                    'tanggal_pesan' => 'required',
+                    'qty' => 'required',
+                    'pembayaran' => 'required',
+                    'harga' => 'required',
+                    'sales' => 'required',
+                    'status' => 'required',
+                ]);
+    
+                $pemesanan->id_customer = $post['id_customer'];
+                $pemesanan->nama_customer = $post['nama_customer'];
+                $pemesanan->alamat = $post['alamat'];
+                $pemesanan->kode_barang = $post['kode_barang'];
+                $pemesanan->nama_barang = $post['nama_barang'];
+                $pemesanan->tanggal_pesan = $post['tanggal_pesan'];
+                $pemesanan->qty = $post['qty'];
+                $pemesanan->pembayaran = $post['pembayaran'];
+                $pemesanan->harga = $post['harga'];
+                $pemesanan->sales = $post['sales'];
+                $pemesanan->status = $post['status'];
+
+                if ( $pemesanan->isDirty() ){
+                    $pemesanan->save();
+                    return redirect()->route('pemesanan')->with(['success'=>'Update berhasil disimpan']);
+                }
+
+                return redirect()->route('pemesanan')->with(['warning'=>'Tidak ada perubahan']);
+                
+            }
             
 
             $data = [
                 'title' => 'Pemesanan',
-                'pemesanan'=>$pemesanan
+                'pemesanan'=>$pemesanan,
+                'customer'=>Customer::all(),
+                'barang'=>Barang::all(),
+                'sales'=>Pegawai::where('jabatan', 'Sales')->get()
+
             ];
     
             return view('admin/edit-pemesanan', $data);

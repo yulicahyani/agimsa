@@ -127,5 +127,21 @@ class CustomerController extends Controller
 
     }
 
+    public function detail_customer(Request $request){
+        $customer = Customer::where('id_customer', $request->customer)->get();
+
+        if(!$customer->isEmpty()){
+            $data = [
+                'status' => 200,
+                'data' =>  $customer
+            ];
+        }else{
+            $data = [
+                'status' => 500,
+            ];
+        }
+        return $data;
+    }
+
     
 }

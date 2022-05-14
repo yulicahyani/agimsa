@@ -10,6 +10,6 @@ class Barang extends Model
     use HasFactory;
 
     protected $table = 'tb_barang';
-    protected $primaryKey = 'id_barang';
+    protected $primaryKey = 'kode_barang';
 
 }
