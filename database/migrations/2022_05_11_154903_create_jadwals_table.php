@@ -14,15 +14,15 @@ class CreateJadwalsTable extends Migration
     public function up()
     {
         Schema::create('tb_jadwal', function (Blueprint $table) {
-            $table->increments('id_kunjungan');
+            $table->id('id_kunjungan');
             $table->foreignId('id_pegawai')->unsigned();
             $table->foreignId('id_customer')->unsigned();
-            $table->string('nama_pegawai', 10);
-            $table->string('nama_customer', 10);
+            $table->string('nama_pegawai', 100);
+            $table->string('nama_customer', 100);
             $table->string('daerah', 10);
-            $table->string('lokasi_kunjungan', 10);
+            $table->string('lokasi_kunjungan', 100);
             $table->date('tanggal');
-            $table->string('keterangan', 10);
+            $table->string('keterangan', 100);
         });  
 
         Schema::table('tb_jadwal', function (Blueprint $table) {

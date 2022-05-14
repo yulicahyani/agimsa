@@ -30,41 +30,18 @@ Route::get('/lihat-pegawai/{id}', [PegawaiController::class, 'detail_pegawai'])-
 Route::match(['get', 'post'], '/edit-pegawai/{id}', [PegawaiController::class, 'edit_pegawai'])->name('edit-pegawai');
 Route::post('/delete-pegawai', [PegawaiController::class, 'delete_pegawai'])->name('delete-pegawai');
 
-Route::get('/customer', function () {
-    return view('admin\customer', [
-        "title" => "Customer"
-    ]);
-});
+//Customer
+Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
+Route::get('/lihat-customer/{id}', [CustomerController::class, 'lihat_customer'])->name('lihat-customer');
+Route::match(['get', 'post'], '/edit-customer/{id}', [CustomerController::class, 'edit_customer'])->name('edit-customer');
+Route::match(['get', 'post'],  '/tambah-customer', [CustomerController::class, 'tambah_customer'])->name('tambah-customer');
+Route::post('/delete-customer', [CustomerController::class, 'delete_customer'])->name('delete-customer');
 
-Route::get('/lihat-customer', function () {
-    return view('admin\lihat-customer', [
-        "title" => "Customer"
-    ]);
-});
+//Pemesanan
+Route::get('/pemesanan', [PemesananController::class, 'index'])->name('pemesanan');
+Route::match(['get', 'post'], '/edit-pemesanan/{id}', [PemesananController::class, 'edit_pemesanan'])->name('edit-pemesanan');
+Route::post('/delete-pemesanan', [PemesananController::class, 'delete_pemesanan'])->name('delete-pemesanan');
 
-Route::get('/edit-customer', function () {
-    return view('admin\edit-customer', [
-        "title" => "Customer"
-    ]);
-});
-
-Route::get('/tambah-customer', function () {
-    return view('admin\tambah-customer', [
-        "title" => "Customer"
-    ]);
-});
-
-Route::get('/pemesanan', function () {
-    return view('admin\pemesanan', [
-        "title" => "Pemesanan"
-    ]);
-});
-
-Route::get('/edit-pemesanan', function () {
-    return view('admin\edit-pemesanan', [
-        "title" => "Pemesanan"
-    ]);
-});
 
 Route::get('/penjualan-baru', function () {
     return view('admin\penjualan-baru', [

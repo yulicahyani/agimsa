@@ -16,15 +16,15 @@ class CreatePemesanansTable extends Migration
         Schema::create('tb_pemesanan', function (Blueprint $table) {
             $table->id('id_pemesanan');
             $table->foreignId('id_customer')->unsigned();
-            $table->string('nama_customer', 10);
-            $table->string('alamat', 10);
+            $table->string('nama_customer', 100);
+            $table->string('alamat', 100);
             $table->foreignId('kode_barang')->unsigned();
-            $table->string('nama_barang', 10);
+            $table->string('nama_barang', 100);
             $table->date('tanggal_pesan');
             $table->integer('qty');
-            $table->string('pembayaran', 10);
+            $table->string('pembayaran', 100);
             $table->integer('harga');
-            $table->string('sales', 10);
+            $table->string('sales', 100);
             $table->string('status', 10);
         });
 

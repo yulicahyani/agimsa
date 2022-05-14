@@ -11,6 +11,7 @@ class Penjualan extends Model
 
     protected $table = 'tb_penjualan';
     protected $primaryKey = 'id_penjualan';
+    public $timestamps = false;
 
     public function pemesanan()
     {

@@ -32,10 +32,10 @@ class PegawaiController extends Controller
                 $user = new Pegawai();
                 $user->jabatan = $post['jabatan'];
                 $user->nama_pegawai = $post['nama_pegawai'];
-                $user->tempat_lahir = $post['nama_pegawai'];
+                $user->tempat_lahir = $post['tempat_lahir'];
                 $user->tgl_lahir = $post['tgl_lahir'];
                 $user->jenis_kelamin = $post['jenis_kelamin'];
-                $user->no_tlp = $post['no_tlp'];
+                $user->no_tlp = (string)$post['no_tlp'];
                 $user->username = $post['username'];
                 $user->password = $post['password'];
                 $user->agama = $post['agama'];
@@ -72,16 +72,14 @@ class PegawaiController extends Controller
 
     public function detail_pegawai(Request $request, $id){
         if(session()->has('user') && session('user')->jabatan == 'Admin'){
-
+            $data = [
+                'title'=>'Lihat Pegawai',
+                'pegawai'=> Pegawai::find($id)
+            ];
+            return view('admin/lihat-pegawai', $data);
         }else{
             return redirect('/login');
         }
-
-        $data = [
-            'title'=>'Lihat Pegawai',
-            'pegawai'=> Pegawai::find($id)
-        ];
-        return view('admin/lihat-pegawai', $data);
     }
 
     public function edit_pegawai(Request $request, $id){
@@ -104,10 +102,10 @@ class PegawaiController extends Controller
 
                 $pegawai->jabatan = $post['jabatan'];
                 $pegawai->nama_pegawai = $post['nama_pegawai'];
-                $pegawai->tempat_lahir = $post['nama_pegawai'];
+                $pegawai->tempat_lahir = $post['tempat_lahir'];
                 $pegawai->tgl_lahir = $post['tgl_lahir'];
                 $pegawai->jenis_kelamin = $post['jenis_kelamin'];
-                $pegawai->no_tlp = $post['no_tlp'];
+                $pegawai->no_tlp = (string)$post['no_tlp'];
                 $pegawai->username = $post['username'];
                 $pegawai->password = $post['password'];
                 $pegawai->agama = $post['agama'];
@@ -128,7 +126,7 @@ class PegawaiController extends Controller
                     $pegawai->save();
                     return redirect()->route('data-pegawai')->with(['success'=>'Update berhasil disimpan']);
                 }
-                return redirect()->route('data-pegawai')->with(['warning'=>'Tidak ada perubahan pada Customer']);
+                return redirect()->route('data-pegawai')->with(['warning'=>'Tidak ada perubahan']);
             }
 
 
@@ -148,7 +146,7 @@ class PegawaiController extends Controller
     public function delete_pegawai(Request $request){
         if(session()->has('user') && session('user')->jabatan == 'Admin'){
             Pegawai::find($request->id_pegawai)->delete();
-            return redirect()->route('data-pegawai')->with(['success'=>'Data Customer berhasil dihapus!']);
+            return redirect()->route('data-pegawai')->with(['success'=>'Data berhasil dihapus!']);
         }else{
             return redirect('/login');
         }

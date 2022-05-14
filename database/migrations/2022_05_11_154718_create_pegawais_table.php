@@ -15,16 +15,16 @@ class CreatePegawaisTable extends Migration
     {
         Schema::create('tb_pegawai', function (Blueprint $table) {
             $table->id('id_pegawai'); 
-            $table->string('jabatan', 10);
-            $table->string('nama_pegawai', 20);
-            $table->string('tempat_lahir', 20);
+            $table->string('jabatan', 100);
+            $table->string('nama_pegawai', 100);
+            $table->string('tempat_lahir', 100);
             $table->date('tgl_lahir');
             $table->string('jenis_kelamin', 10);
-            $table->integer('no_tlp');
-            $table->string('username', 20);
-            $table->string('password', 20);
-            $table->string('agama', 10);
-            $table->string('email', 20);
+            $table->string('no_tlp',12);
+            $table->string('username', 100);
+            $table->string('password', 100);
+            $table->string('agama', 100);
+            $table->string('email', 100);
             $table->text('alamat');
         });
 

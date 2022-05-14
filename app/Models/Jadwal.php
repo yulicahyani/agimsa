@@ -11,6 +11,7 @@ class Jadwal extends Model
 
     protected $table = 'tb_jadwal';
     protected $primaryKey = 'id_kunjungan';
+    public $timestamps = false;
 
     public function pegawai()
     {
