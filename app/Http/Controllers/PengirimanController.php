@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengiriman;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePengirimanRequest;
 use App\Http\Requests\UpdatePengirimanRequest;
@@ -49,6 +50,7 @@ class PengirimanController extends Controller
 
             $data = [
                 'title'=>'Pengiriman',
+                'pengirim'=>Pegawai::where('jabatan', 'Pengirim')->get(),
             ];
             return view('admin/tambah-pengiriman', $data);
         }else{
@@ -85,8 +87,10 @@ class PengirimanController extends Controller
 
             $data = [
                 'title'=>'Pengiriman',
-                'pengiriman'=>Pengiriman::find($id)
+                'pengiriman'=>Pengiriman::find($id),
+                'pengirim'=>Pegawai::where('jabatan', 'Pengirim')->get()
             ];
+            
             return view('admin/edit-pengiriman', $data);
         }else{
             return redirect('/login');
