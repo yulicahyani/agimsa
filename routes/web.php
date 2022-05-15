@@ -178,11 +178,7 @@ Route::get('/pimpinan', function () {
     ]);
 });
 
-Route::get('/laporan-pegawai', function () {
-    return view('pimpinan\laporan-pegawai', [
-        "title" => "Laporan Pegawai"
-    ]);
-});
+Route::get('/laporan-pegawai', [PegawaiController::class, 'laporan_pegawai'])->name('laporan-pegawai');
 
 Route::get('/laporan-penjualan', function () {
     return view('pimpinan\laporan-penjualan', [
