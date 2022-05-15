@@ -11,5 +11,6 @@ class Barang extends Model
 
     protected $table = 'tb_barang';
     protected $primaryKey = 'kode_barang';
+    public $timestamps = false;
 
 }

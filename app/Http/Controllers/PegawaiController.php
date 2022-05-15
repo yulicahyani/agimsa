@@ -169,5 +169,16 @@ class PegawaiController extends Controller
         return $data;
     }
 
+    public function laporan_pegawai(){
+        if(session()->has('user') && session('user')->jabatan == 'Pimpinan'){
+            $data = [
+                'title' => 'Laporan Pegawai',
+                'pegawai' => Pegawai::all(),
+            ];
+            return view('pimpinan\laporan-pegawai', $data);
+        }else{
+            return redirect('/login');
+        }
+    }
     
 }

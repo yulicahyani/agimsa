@@ -151,13 +151,13 @@
                 <!-- textarea -->
                 <div class="form-group">
                     <label>Pembelian</label>
-                    <input type="text" name="pembayaran" class="form-control" placeholder="Enter..." required>
+                    <input type="text" name="pembayaran" class="form-control" placeholder="Cash/Credit" required>
                 </div>
                 </div>
                 <div class="col-sm-4">
                 <div class="form-group">
                     <label>Harga</label>
-                    <input type="text" name="harga" class="form-control" placeholder="Enter..." required>
+                    <input type="number" name="harga" class="form-control" placeholder="Rp." required>
                 </div>
                 </div>
                 <div class="col-sm-4">
@@ -180,9 +180,9 @@
                     <label>Status</label>
                     <select class="form-control select2" style="width: 100%;" name="status"
                         required>
-                        <option value="Tunda" selected>Tunda</option>
-                        <option value="Setuju">Setuju</option>
-                        <option value="Selesai">Selesai</option>
+                        <option value="tunda" selected>Tunda</option>
+                        <option value="setuju">Setuju</option>
+                        <option value="selesai">Selesai</option>
                     </select>
                 </div>
                 </div>

@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'data pegawai')</title>
+    <title>@yield('title', 'tambah pengririman')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -21,6 +21,8 @@
         href="{{ asset('') }}assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/jqvmap/jqvmap.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('') }}assets/dist/css/adminlte.min.css">
     <!-- overlayScrollbars -->
@@ -29,11 +31,6 @@
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
-
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     @push('styles')
     <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
@@ -67,12 +64,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Pengeluaran Barang</h1>
+                            <h1 class="m-0">Tambah Data Barang</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active">Pengeluaran Barang</li>
+                                <li class="breadcrumb-item active">Data Barang</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -83,49 +80,59 @@
 
             <!-- Main content -->
             <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>No.</th>
-                                                <th>Kode Barang</th>
-                                                <th>Nama Barang</th>
-                                                <th>Stok</th>
-                                                <th>Barang Keluar</th>
-                                                <th>Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($barang as $key=>$item)
-                                            <tr>
-                                                <td>{{ $key+1}}</td>
-                                                <td>@php printf('%04d',$item->kode_barang); @endphp</td>
-                                                <td>{{ $item->nama_barang }}</td>
-                                                <td>{{ $item->jumlah_stok }}</td>
-                                                <td>{{ $item->total }}</td>
-                                                <td>
-                                                    <a href="{{ route('lihat-pengeluaran-barang', ['kode'=>$item->kode_barang]) }}"
-                                                        title='detail' class="btn btn-info btn-sm">detail</a>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                <!-- general form elements -->
+                <div class="card">
+                    <!-- form start -->
+                    <form method="POST">
+                        @csrf
+                        <div class="card-body">
+                            <div class="row mt-4">
+                                <div class="col-sm-6">
+                                    <!-- text input -->
+                                    <div class="form-group">
+                                        <label>Nama Barang</label>
+                                        <input type="text" name="nama_barang" class="form-control"
+                                            placeholder="Enter ..." required>
+                                    </div>
                                 </div>
-                                <!-- /.card-body -->
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Merk</label>
+                                        <input type="text" name="merk" class="form-control" placeholder="Enter ..."
+                                            required>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- /.card -->
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!-- textarea -->
+                                    <div class="form-group">
+                                        <label>Jumlah Stok</label>
+                                        <input type="number" name="jumlah_stok" class="form-control"
+                                            placeholder="Enter ..." required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <!-- textarea -->
+                                    <div class="form-group">
+                                        <label>Keterangan</label>
+                                        <input type="text" name="keterangan" class="form-control"
+                                            placeholder="Enter ..." required>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <a href=" {{route('data-barang-gudang')}} " class="btn btn-danger" title='back'>
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.card -->
             </section>
             <!-- /.content -->
         </div>
@@ -153,6 +160,9 @@
     <script src="{{ asset('') }}assets/plugins/chart.js/Chart.min.js"></script>
     <!-- Sparkline -->
     <script src="{{ asset('') }}assets/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="{{ asset('') }}assets/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('') }}assets/plugins/jquery-knob/jquery.knob.min.js"></script>
     <!-- daterangepicker -->
@@ -171,32 +181,6 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
 
-
-    <!-- DataTables  & Plugins -->
-    <script src="{{ asset('') }}assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/jszip/jszip.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/pdfmake/pdfmake.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/pdfmake/vfs_fonts.js"></script>
-    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
-    <script>
-        $(function () {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["csv", "excel", "pdf", "print"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-        });
-
-    </script>
 </body>
 
 </html>

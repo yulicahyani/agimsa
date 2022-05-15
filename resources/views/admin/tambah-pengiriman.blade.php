@@ -86,7 +86,11 @@
                   <!-- text input -->
                   <div class="form-group">
                     <label>Nama Pengirim</label>
-                    <input type="text" name="nama_pengirim" class="form-control" placeholder="Enter ..." required>
+                    <select class="form-control select2" style="width: 100%;" name="nama_pengirim" required>
+                        @foreach ($pengirim as $item)
+                        <option value="{{ $item->nama_pegawai }}"> {{ $item->nama_pegawai }} </option>
+                        @endforeach
+                    </select>
                 </div>
                 </div>
                 <div class="col-sm-6">

@@ -107,18 +107,18 @@ Route::post('/delete-jadwal', [JadwalController::class, 'delete_jadwal'])->name(
 Route::get('/lihat-jadwal/{id}', [JadwalController::class, 'lihat_jadwal'])->name('lihat-jadwal');
 
 /* -----------Gudang-----------------*/
+// Dasboard
+Route::get('/gudang', [DashboardController::class, 'index_gudang'])->name('gudang');
 
-Route::get('/gudang', function () {
-    return view('gudang\dashboard', [
-        "title" => "Dashboard"
-    ]);
-});
+//Data Barang
+Route::get('/data-barang-gudang', [BarangController::class, 'index_gudang'])->name('data-barang-gudang');
+Route::match(['get', 'post'], '/tambah-barang', [BarangController::class, 'tambah_barang'])->name('tambah-barang');
+Route::match(['get', 'post'], '/edit-barang/{kode}', [BarangController::class, 'edit_barang'])->name('edit-barang');
+Route::post('/delete-barang', [BarangController::class, 'delete_barang'])->name('delete-barang');
+Route::get('/lihat-barang', [BarangController::class, 'detail_barang'])->name('lihat-barang');
+Route::get('/pengeluaran-barang', [BarangController::class, 'pengeluaran_barang'])->name('pengeluaran-barang');
+Route::get('/lihat-pengeluaran-barang/{kode}', [BarangController::class, 'lihat_pengeluaran_barang'])->name('lihat-pengeluaran-barang');
 
-Route::get('/data-barang-gudang', function () {
-    return view('gudang\data-barang', [
-        "title" => "Data Barang"
-    ]);
-});
 
 Route::get('/stok-barang', function () {
     return view('gudang\stok-barang', [
@@ -126,28 +126,13 @@ Route::get('/stok-barang', function () {
     ]);
 });
 
-Route::get('/pengeluaran-barang', function () {
-    return view('gudang\pengeluaran-barang', [
-        "title" => "Pengeluaran Barang"
-    ]);
-});
 
 /* -----------Pimpinan-----------------*/
 //Dashboard
 Route::get('/pimpinan', [DashboardController::class, 'index_pimpinan'])->name('index_pimpinan');
 
-Route::get('/laporan-pegawai', function () {
-    return view('pimpinan\laporan-pegawai', [
-        "title" => "Laporan Pegawai"
-    ]);
-});
+Route::get('/laporan-pegawai', [PegawaiController::class, 'laporan_pegawai'])->name('laporan-pegawai');
 
 Route::get('/laporan-penjualan', [PenjualanController::class, 'index_pimpinan'])->name('laporan_penjualan');
-
-// Route::get('/laporan-penjualan', function () {
-//     return view('pimpinan\laporan-penjualan', [
-//         "title" => "Laporan Penjualan"
-//     ]);
-// });
 
 Route::get('/laporan-data-barang', [BarangController::class, 'index_pimpinan'])->name('laporan_data_barang');
