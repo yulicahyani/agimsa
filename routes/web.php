@@ -159,6 +159,8 @@ Route::match(['get', 'post'], '/tambah-barang', [BarangController::class, 'tamba
 Route::match(['get', 'post'], '/edit-barang/{kode}', [BarangController::class, 'edit_barang'])->name('edit-barang');
 Route::post('/delete-barang', [BarangController::class, 'delete_barang'])->name('delete-barang');
 Route::get('/lihat-barang', [BarangController::class, 'detail_barang'])->name('lihat-barang');
+Route::get('/pengeluaran-barang', [BarangController::class, 'pengeluaran_barang'])->name('pengeluaran-barang');
+Route::get('/lihat-pengeluaran-barang/{kode}', [BarangController::class, 'lihat_pengeluaran_barang'])->name('lihat-pengeluaran-barang');
 
 
 Route::get('/stok-barang', function () {
@@ -167,13 +169,8 @@ Route::get('/stok-barang', function () {
     ]);
 });
 
-Route::get('/pengeluaran-barang', function () {
-    return view('gudang\pengeluaran-barang', [
-        "title" => "Pengeluaran Barang"
-    ]);
-});
 
-/* -----------Gudang-----------------*/
+/* -----------Pimpinan-----------------*/
 
 Route::get('/pimpinan', function () {
     return view('pimpinan\dashboard', [

@@ -51,14 +51,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="/stok-barang" class="nav-link {{ ($title === "Stok Barang")? 'active' : '' }}">
               <i class="nav-icon fas fa-box-open"></i>
               <p>
                 Stok Barang
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a href="/pengeluaran-barang" class="nav-link {{ ($title === "Pengeluaran Barang")? 'active' : '' }}">
               <i class="nav-icon fas fa-exchange-alt"></i>

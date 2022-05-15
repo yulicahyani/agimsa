@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('') }}assets/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="{{ asset('') }}assets/{{ asset('') }}assets/plugins/fontawesome-free/css/all.min.css">
 
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'data barang')</title>
+    <title>@yield('title', 'penjualan baru')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -31,6 +31,11 @@
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
     @push('styles')
     <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
@@ -64,12 +69,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Data Barang</h1>
+                            <h1 class="m-0">Lihat Pengeluaran Barang</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="/gudang">Home</a></li>
-                                <li class="breadcrumb-item active">Data Barang</li>
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item active">Pengeluaran Barang</li>
                             </ol>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -84,37 +89,70 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header">
-                                </div>
+
                                 <!-- /.card-header -->
+                                <form>
+                                    <div class="card-body">
+                                        <table id="example2" class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group input-group-sm">
+                                                            <label class="mr-2">Kode Barang:</label>
+                                                            <input type="text" name="kode_barng" class="form-control"
+                                                                value="@php printf('%04d',$barang->kode_barang); @endphp" readonly required>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                                <tr>
+                                                    <td>
+                                                        <div class="input-group input-group-sm">
+                                                            <label class="mr-2">Nama Barang</label>
+                                                            <input type="text" name="nama_barang" class="form-control" 
+                                                            value="{{ isset($barang) ? $barang->nama_barang :null }}"required>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                                <!-- /.card-body -->
+
                                 <div class="card-body">
-                                    <table id="example1" class="table table-bordered table-striped">
+                                    <table id="example1" class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>No.</th>
-                                                <th>Kode Barang</th>
-                                                <th>Nama Barang</th>
-                                                <th>Stok</th>
-                                                <th>Barang Keluar</th>
-                                                <th>Aksi</th>
+                                                <th>No</th>
+                                                <th>No. Faktur</th>
+                                                <th>Tanggal</th>
+                                                <th>Alamat</th>
+                                                <th>Total Barang</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($barang as $key=>$item)
-                                            <tr>
-                                                <td>{{ $key+1}}</td>
-                                                <td>@php printf('%04d',$item->kode_barang); @endphp</td>
-                                                <td>{{ $item->nama_barang }}</td>
-                                                <td>{{ $item->jumlah_stok }}</td>
-                                                <td>{{ $item->total }}</td>
-                                                <td>
-                                                    <a href="{{ route('lihat-pengeluaran-barang', ['kode'=>$item->kode_barang]) }}"
-                                                        title='detail' class="btn btn-info btn-sm">detail</a>
-                                                </td>
-                                            </tr>
-                                            @endforeach
+                                          @if (isset($penjualan))
+                                          @foreach ($penjualan as $key=>$item)
+                                          <tr>
+                                            <td>{{$key+1}} </td>
+                                            <td> @php printf('%04d',$item->no_faktur); @endphp </td>
+                                            <td>{{$item->tanggal}}</td>
+                                            <td>{{$item->alamat}}</td>
+                                            <td>{{$item->total_barang}}</td>
+                                          </tr>
+                                        @endforeach
+                                          @endif
                                         </tbody>
+                                          
                                     </table>
+                                    <div class="card-footer">
+                                        <a href="/pengeluaran-barang" class="btn btn-primary" title='back'>
+                                            Kembali
+                                        </a>
+                                      </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -126,7 +164,6 @@
                 </div>
                 <!-- /.container-fluid -->
             </section>
-
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
@@ -174,37 +211,36 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
 
-
-     <!-- DataTables  & Plugins -->
-     <script src="{{ asset('') }}assets/plugins/datatables/jquery.dataTables.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/jszip/jszip.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/pdfmake/pdfmake.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/pdfmake/vfs_fonts.js"></script>
-     <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-     <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
- 
-
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('') }}assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/jszip/jszip.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
     <script>
         $(function () {
-            $("#example1").DataTable({
-              "responsive": true,
+            $(function () {
+                $("#example1").DataTable({
+                    "responsive": true,
                     "lengthChange": false,
                     "autoWidth": false,
                     "buttons": ["csv", "excel", "pdf", "print"],
                     "ordering": false,
                     'info': false,
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            });
+
         });
 
     </script>
-
 </body>
 
 </html>
