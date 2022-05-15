@@ -158,7 +158,7 @@ class PenjualanController extends Controller
             $pemesanan = Pemesanan::where('id_pemesanan', $penjualan[0]->id_pemesanan)->first();
 
             $data = [
-                'title' => 'Lihat Penjualan',
+                'title' => 'Jumlah Penjualan',
                 'penjualan' => $penjualan,
                 'pemesanan' => $pemesanan,
                 'jumlah_bayar' => $jumlah_bayar                      
@@ -175,6 +175,20 @@ class PenjualanController extends Controller
         if(session()->has('user') && session('user')->jabatan == 'Admin'){   
             Penjualan::where('no_faktur', $request->no_faktur)->delete();
             return redirect()->route('jumlah-penjualan')->with(['success'=>'Data berhasil dihapus!']);
+        }else{
+            return redirect('/login');
+        }
+    }
+
+    public function index_pimpinan()
+    {
+        if(session()->has('user') && session('user')->jabatan == 'Pimpinan'){
+            $data = [
+                'title' => 'Laporan Penjualan',
+                'penjualan' => Penjualan::all()
+            ];
+    
+            return view('pimpinan\laporan-penjualan', $data);
         }else{
             return redirect('/login');
         }

@@ -123,7 +123,7 @@
                                                         <div class="input-group input-group-sm">
                                                             <label class="mr-2">No Faktur :</label>
                                                             <input type="number" name="sales" class="form-control"
-                                                                value="{{ $penjualan[0]->no_faktur }}" disabled>
+                                                                value="@php printf('%06d',$penjualan[0]->no_faktur); @endphp" disabled>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -160,7 +160,7 @@
                                             @foreach ($penjualan as $key=>$item)
                                             <tr>
                                                 <td> {{$key+1}} </td>
-                                                <td> {{$item->kode_barang}} </td>
+                                                <td> @php printf('%04d',$item->kode_barang); @endphp </td>
                                                 <td> {{$item->nama_barang}} </td>
                                                 <td> {{$item->qty}} </td>
                                                 <td> {{$item->harga}} </td>

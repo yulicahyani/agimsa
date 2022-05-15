@@ -34,6 +34,11 @@
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
   @endpush
@@ -94,17 +99,51 @@
               </div>
               <!-- /.card-header -->
 
+              <div class="card-body">
+                @if(session('success'))
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> BERHASIL!</h5>
+                    {{session('success')}}
+                </div>
+                @elseif(session('warning'))
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> GAGAL!</h5>
+                    {{session('warning')}}
+                </div>
+                @elseif(session('error'))
+                <div class="alert alert-danger alert-dismissible" style="margin-top: 30px;">
+                    <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-exclamation-triangle"></i> GAGAL!</h5>
+                    {{session('error')}}
+                </div>
+                @endif
+
 
               <div class="row mt-3 ml-3">
                 <div class="col-sm-3">
-                    <form action="\penjualan-baru">
+                    <form action="" method="POST">
+                      @csrf
                         <div class="input-group input-group-sm">
-                          <select class="form-control select2" name="bulan" style="width: 80px%;">
-                              <option selected="selected">Periode</option>
-                              <option >Januari</option>
-                              <option>Februari</option>
-                              <option>Maret</option>
-                          </select>
+                          <select class="form-control select2" name="bulan" style="width: 150px;">
+                            <option  value='' selected="selected">Periode</option>
+                            <option value=1>Januari</option>
+                            <option value=2>Februari</option>
+                            <option value=3>Maret</option>
+                            <option value=4>April</option>
+                            <option value=5>Mei</option>
+                            <option value=6>Juni</option>
+                            <option value=7>Juli</option>
+                            <option value=8>Agustus</option>
+                            <option value=9>September</option>
+                            <option value=10>Oktober</option>
+                            <option value=11>November</option>
+                            <option value=12>Desember</option>
+                        </select>
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-sm btn-default">
                                     <i class="fa fa-search"></i>
@@ -122,7 +161,7 @@
                     <th>Nama Pegawai</th>
                     <th>Tanggal</th>
                     <th>Penjualan</th>
-                    <th>Persentase</th>
+                    <th>Persentase(%)</th>
                     <th>Target</th>
                     <th>Komisi</th>
                     <th>Keterangan</th>
@@ -130,46 +169,31 @@
                   </tr>
                   </thead>
                   <tbody>
+                  @foreach ($target as $item)
+                  @php
+                      $komisi = ((int) $item->persentase * $item->penjualan)/100;
+                  @endphp
                   <tr>
-                    <td>Ketut Setiawan</td>
-                    <td>13/05/2022</td>
-                    <td>76.789.00</td>
-                    <td>1%</td>
-                    <td>100.000.000</td>
-                    <td>767.890</td>
-                    <td>Belum Tercapai</td>
+                    <td>{{ $item->nama_sales }}</td>
+                    <td>{{ $item->tanggal }}</td>
+                    <td>{{ $item->penjualan }}</td>
+                    <td>{{ $item->persentase }}</td>
+                    <td>100000000</td>
+                    <td>{{ $komisi }}</td>
+                    <td>{{ $item->status }}</td>
                     <td>
-                      <a href="/lihat-target" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                      <a href="{{ route('lihat-target', ['id'=>$item->id_target]) }}" class="btn btn-info btn-sm btn-status" title='Lihat'>
                         <i class='fa fa-eye'></i>
                       </a>
-                      <a href="/edit-target" title='edit' class="btn btn-warning btn-sm">
+                      <a href="{{ route('edit-target', ['id'=>$item->id_target]) }}" title='edit' class="btn btn-warning btn-sm">
                         <i class="fa fa-edit"></i>
                       </a>                                     
-                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
+                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="idTarget({{$item->id_target}})" title='Delete'>
                         <i class="far fa-trash-alt"></i>
                       </a>
                     </td>
                   </tr>
-                  <tr>
-                    <td>Dyah Sari</td>
-                    <td>13/05/2022</td>
-                    <td>76.789.00</td>
-                    <td>1%</td>
-                    <td>100.000.000</td>
-                    <td>767.890</td>
-                    <td>Belum Tercapai</td>
-                    <td>
-                      <a href="/lihat-target" class="btn btn-info btn-sm btn-status" title='Lihat'>
-                        <i class='fa fa-eye'></i>
-                      </a>
-                      <a href="/edit-target" title='edit' class="btn btn-warning btn-sm">
-                        <i class="fa fa-edit"></i>
-                      </a>                                     
-                      <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                        <i class="far fa-trash-alt"></i>
-                      </a>
-                    </td>
-                  </tr>
+                  @endforeach
                 </table>
               </div>
               <!-- /.card-body -->
@@ -185,6 +209,56 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+      <!-- modal-delete -->
+      <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Peringatan! </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>Data Target akan dihapus. Anda yakin? </p>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                  <button type="buttpn" class="btn btn-warning btn-delete-ask" data-dismiss="modal">
+                      Continue</button>
+              </div>
+          </div>
+      </div>
+    </div>
+  
+  
+    <div class="modal fade" id="modal-delete-confirm" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Peringatan! </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                  <p>Data Target yang terhubung dengan data lainnya juga akan dihapus. Anda
+                      yakin? </p>
+              </div>
+              <div class="modal-footer">
+                  <form action="{{ route('delete-target') }}" method="post">
+                      @csrf
+                      <input type="hidden" id="id_target" name="id_target">
+                      <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn btn-danger btn-confirm-delete"> Delete</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+    </div>
  
   <!-- footer -->
   @include('admin.admin_layouts.footer')
@@ -242,6 +316,13 @@
 <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
+
+{{-- Select2 --}}
+<script src="{{ asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+
 <script>
   $(function () {
     $("#example1").DataTable({
@@ -250,5 +331,26 @@
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
 </script>
+
+
+<script>
+    $(".select2").select2();
+        //Initialize Select2 Elements
+    $('.select2bs4').select2({
+    theme: 'bootstrap4'
+    })
+
+    function idTarget(id) {
+      console.log(id)
+      $('#modal-delete').modal('show')
+      $('#id_target').val(id)
+    }
+
+    $('body').on('click', '.btn-delete-ask', function () {
+        $('#modal-delete-confirm').modal('show')
+    })
+
+</script>
+
 </body>
 </html>

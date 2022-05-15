@@ -95,16 +95,19 @@
                   <div class="form-group">
                     <label>Sales</label>
                     <select class="form-control select2" name="sales" style="width: 100%;" disabled>
-                        <option selected="selected">Ketut</option>
-                        <option>Bayu</option>
-                        <option>Kadek</option>
+                      <option value="" >Pilih Sales</option>
+                      @foreach ($sales as $item)
+                      <option value="{{ $item->id_pegawai }}" 
+                        {{ $target->id_pegawai==$item->id_pegawai ? 'selected' : '' }}>
+                          {{ $item->id_pegawai }} - {{ $item->nama_pegawai }} </option>
+                      @endforeach
                     </select>
                 </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Tanggal</label>
-                    <input type="text" name="tanggal" class="form-control" value="13/05/2022" disabled>
+                    <input type="text" name="tanggal" class="form-control" value="{{ $target->tanggal }}" disabled>
                   </div>
                 </div>
               </div>
@@ -113,13 +116,13 @@
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Penjualan</label>
-                    <input type="text" name="penjualan" class="form-control" value="76.789.000" disabled>
+                    <input type="text" name="penjualan" class="form-control" value="{{ $target->penjualan }}" disabled>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Presentase</label>
-                    <input type="text" name="persentase" class="form-control" value="1%" disabled>
+                    <input type="text" name="persentase" class="form-control" value="{{ $target->persentase }}" disabled>
                   </div>
                 </div>
               </div>
@@ -129,9 +132,8 @@
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control select2" name="status" style="width: 100%;" disabled>
-                        <option selected="selected">Tercapai</option>
-                        <option>Belum Tercapai</option>
-                    </select>
+                      <option selected="selected" value="belum tercapai" {{ $target->status=='belum tercapai'? 'selected':'' }} >Belum Tercapai</option>
+                      <option value="tercapai" {{ $target->status=='tercapai'? 'selected':'' }}>Tercapai</option>
                   </div>
                 </div>
               </div>

@@ -39,5 +39,19 @@ class BarangController extends Controller
         }
         return $data;
     }
+
+    public function index_pimpinan()
+    {
+        if(session()->has('user') && session('user')->jabatan == 'Pimpinan'){
+            $data = [
+                'title' => 'Laporan Data Barang',
+                'barang' => Barang::all()
+            ];
+    
+            return view('pimpinan\laporan-data-barang', $data);
+        }else{
+            return redirect('/login');
+        }
+    }
     
 }

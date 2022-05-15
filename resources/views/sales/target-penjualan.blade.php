@@ -91,7 +91,8 @@
 
               <div class="row mt-3 ml-3">
                 <div class="col-sm-3">
-                    <form action="\penjualan-baru">
+                    <form action="" method="POST">
+                      @csrf
                         <div class="input-group input-group-sm">
                           <select class="form-control select2" name="bulan" style="width: 150px;">
                               <option  value='' selected="selected">Periode</option>
@@ -143,7 +144,7 @@
                     <td>{{ $item->persentase }}</td>
                     <td>100.000.000</td>
                     <td>{{ $komisi }}</td>
-                    <td>{{ $item->persentase }}</td>
+                    <td>{{ $item->status }}</td>
                   </tr>
                   @endforeach
                 </table>

@@ -135,7 +135,7 @@
                                             @foreach ($barang as $item)
                                             <option value="{{ $item->kode_barang }}"
                                                 {{ $pemesanan->kode_barang==$item->kode_barang ? 'selected' : '' }}>
-                                                {{ $item->kode_barang }} - {{ $item->nama_barang }} </option>
+                                                @php printf('%04d',$item->kode_barang); @endphp - {{ $item->nama_barang }} </option>
                                             @endforeach
                                         </select>
                                     </div>

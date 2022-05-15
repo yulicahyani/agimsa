@@ -84,14 +84,29 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-                <div class="card-header">
-                    <a href="/tambah-pesanan-sales" class="btn btn-success" title='tambah'>
-                      <p class="mb-auto">
-                        Tambah Pesanan
-                        <i class='ion ion-person-add'></i>
-                      </p>
-                    </a>
+              <div class="row mt-3 ml-3">
+                <div class="col-sm-4">
+                    <form action="" method="POST">
+                        @csrf
+                        <div class="input-group w-75 input-group-sm">
+                            <input type="date" class="form-control form-control-sm" name="tanggal_pesan">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-sm btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+              </div>
+              <div class="card-header">
+                  <a href="/tambah-pesanan-sales" class="btn btn-success" title='tambah'>
+                    <p class="mb-auto">
+                      Tambah Pesanan
+                      <i class='ion ion-person-add'></i>
+                    </p>
+                  </a>
+              </div>
   
               <!-- /.card-header -->
               <div class="card-body">

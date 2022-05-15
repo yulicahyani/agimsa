@@ -180,9 +180,9 @@
                     <label>Status</label>
                     <select class="form-control select2" style="width: 100%;" name="status"
                         required>
-                        <option value="tunda" selected>tunda</option>
-                        <option value="setuju">setuju</option>
-                        <option value="selesai">Selesai</option>
+                        <option value="Tunda" selected>Tunda</option>
+                        <option value="Setuju">Setuju</option>
+                        <option value="Selesai">Selesai</option>
                     </select>
                 </div>
                 </div>

@@ -29,12 +29,18 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
 
+
+   <!-- Select2 -->
+   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2/css/select2.min.css">
+   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+ 
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
   @endpush
 
   @stack('styles')
 
+ 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -78,7 +84,8 @@
         <!-- general form elements -->
         <div class="card">
           <!-- form start -->
-          <form>
+          <form method="POST">
+            @csrf
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-6">
@@ -136,7 +143,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                       <label>Alamat</label>
-                      <input type="text" name="alamat" class="form-control" 
+                      <input type="text" name="lokasi_kunjungan" class="form-control" 
                       value="{{ $jadwal->lokasi_kunjungan }}" required>
                     </div>
                 </div>
@@ -145,7 +152,7 @@
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control select2" name="status" required style="width: 100%;">
-                      <option value="setuju" {{ $jadwal->status=='Menunggu'?'selected':'' }}
+                      <option value="Menunggu" {{ $jadwal->status=='Menunggu'?'selected':'' }}
                         selected>Menunggu</option>
                     <option value="Selesai" {{ $jadwal->status=='Selesai'?'selected':'' }}>Selesai
                     </option>
@@ -220,6 +227,20 @@
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
 
+{{-- Select2 --}}
+<script src="{{ asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+<script>
+    $(".select2").select2();
+        //Initialize Select2 Elements
+    $('.select2bs4').select2({
+    theme: 'bootstrap4'
+    })
+
+</script>
+
 <script>
   $('#id_customer').on('select2:select', function (e) {
     console.log($(this).val())
@@ -241,14 +262,14 @@
     }
   })
 
-  $('#id_pegawair').on('select2:select', function (e) {
+  $('#id_pegawai').on('select2:select', function (e) {
     console.log($(this).val())
     if ($(this).val() != '') {
         $.ajax({
-            url: "{{ route('getDetailCustomer') }}",
+            url: "{{ route('getDetailPegawai') }}",
             method: 'GET',
             data: {
-                customer: $(this).val()
+                pegawai: $(this).val()
             },
             success: function (data) {
                 console.log(data)

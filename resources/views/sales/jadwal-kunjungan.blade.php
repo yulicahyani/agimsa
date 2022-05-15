@@ -86,10 +86,36 @@
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">
+
+                  @if(session('success'))
+                  <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert"
+                          aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-check"></i> BERHASIL!</h5>
+                      {{session('success')}}
+                  </div>
+                  @elseif(session('warning'))
+                  <div class="alert alert-warning alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert"
+                          aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-exclamation-triangle"></i> GAGAL!</h5>
+                      {{session('warning')}}
+                  </div>
+                  @elseif(session('error'))
+                  <div class="alert alert-danger alert-dismissible" style="margin-top: 30px;">
+                      <button type="button" class="close" data-dismiss="alert"
+                          aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-exclamation-triangle"></i> GAGAL!</h5>
+                      {{session('error')}}
+                  </div>
+                  @endif
+                  
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                       <th>ID.Kunjungan</th>
+                      <th>Nama Pegawai</th>
+                      <th>Nama Customer</th>
                       <th>Daerah</th>
                       <th>Tanggal</th>
                       <th>Status</th>
@@ -100,6 +126,8 @@
                     @foreach ($jadwal as $item)
                     <tr>
                       <td>{{ $item->id_kunjungan  }}</td>
+                      <td>{{ $item->nama_pegawai  }}</td>
+                      <td>{{ $item->nama_customer  }}</td>
                       <td>{{ $item->daerah  }}</td>
                       <td>{{ $item->tanggal  }}</td>
                       <td>{{ $item->status  }}</td>

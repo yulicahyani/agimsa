@@ -29,6 +29,10 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
 
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
   @endpush
@@ -78,29 +82,40 @@
         <!-- general form elements -->
         <div class="card">
           <!-- form start -->
-          <form>
+          <form method="POST">
+            @csrf
             <div class="card-body">
               <div class="row">
                 <div class="col-sm-6">
                   <!-- text input -->
                   <div class="form-group">
                     <label>Nama Customer</label>
-                    <select class="form-control select2" name="customer" style="width: 100%;">
-                        <option selected="selected">Dyah</option>
-                        <option>Ayu</option>
-                        <option>Krisna</option>
+                    <select class="form-control select2" name="id_customer" id="id_customer" required>
+                      @foreach ($customer as $item)
+                      <option value="{{ $item->id_customer }}" selected="selected">
+                          {{ $item->id_customer }} - {{ $item->nama_customer }} </option>
+                      @endforeach
                     </select>
-                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" id="namacustomer" name="nama_customer"
+                        value="{{ $item->nama_customer }} ">
+                  </div>
                 </div>
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
                       <label>Nama Sales</label>
-                      <select class="form-control select2" name="sales" style="width: 100%;">
-                          <option selected="selected">Ketut</option>
-                          <option>Bayu</option>
-                          <option>Kadek</option>
-                      </select>
+                      <select class="form-control select2" name="id_pegawai" id="id_pegawai" required>
+                        @foreach ($sales as $item)
+                        <option value="{{ $item->id_pegawai }}" selected="selected">
+                            {{ $item->id_pegawai }} - {{ $item->nama_pegawai }} </option>
+                        @endforeach
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" id="namapegawai" name="nama_pegawai"
+                      value="{{ $item->nama_pegawai }} ">
                   </div>
                 </div>
               </div>
@@ -114,7 +129,7 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label>Daerah</label>
-                    <input type="text" name="persentase" class="form-control" placeholder="Enter ...">
+                    <input type="text" name="daerah" class="form-control" placeholder="Enter ...">
                   </div>
                 </div>
               </div>
@@ -122,16 +137,16 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                       <label>Alamat</label>
-                      <input type="text" name="persentase" class="form-control" placeholder="Enter ...">
+                      <input type="text" name="lokasi_kunjungan" class="form-control" placeholder="Enter ...">
                     </div>
                 </div>
                 <div class="col-sm-6">
                   <!-- textarea -->
                   <div class="form-group">
                     <label>Status</label>
-                    <select class="form-control select2" name="status" style="width: 100%;">
-                        <option selected="selected">Selesai</option>
-                        <option>Menunggu</option>
+                    <select class="form-control select2" name="status" required style="width: 100%;">
+                      <option value="Menunggu" selected>Menunggu</option>
+                    <option value="Selesai" >Selesai</option>
                     </select>
                   </div>
                 </div>
@@ -202,6 +217,61 @@
 {{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
+{{-- Select2 --}}
+<script src="{{ asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+<script>
+  $(".select2").select2();
+      //Initialize Select2 Elements
+  $('.select2bs4').select2({
+  theme: 'bootstrap4'
+  })
+
+</script>
+
+<script>
+$('#id_customer').on('select2:select', function (e) {
+  console.log($(this).val())
+  if ($(this).val() != '') {
+      $.ajax({
+          url: "{{ route('getDetailCustomer') }}",
+          method: 'GET',
+          data: {
+              customer: $(this).val()
+          },
+          success: function (data) {
+              console.log(data)
+              if (data['status'] == 200) {
+                  data = data['data'][0]
+                  $('#namacustomer').val(data['nama_customer'])
+              }
+          }
+      })
+  }
+})
+
+$('#id_pegawai').on('select2:select', function (e) {
+  console.log($(this).val())
+  if ($(this).val() != '') {
+      $.ajax({
+          url: "{{ route('getDetailPegawai') }}",
+          method: 'GET',
+          data: {
+              customer: $(this).val()
+          },
+          success: function (data) {
+              console.log(data)
+              if (data['status'] == 200) {
+                  data = data['data'][0]
+                  $('#namapegawai').val(data['nama_pegawai'])
+              }
+          }
+      })
+  }
+})
+</script>
 
 </body>
 </html>

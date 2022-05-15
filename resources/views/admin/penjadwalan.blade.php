@@ -94,10 +94,35 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                  @if(session('success'))
+                  <div class="alert alert-success alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert"
+                          aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-check"></i> BERHASIL!</h5>
+                      {{session('success')}}
+                  </div>
+                  @elseif(session('warning'))
+                  <div class="alert alert-warning alert-dismissible">
+                      <button type="button" class="close" data-dismiss="alert"
+                          aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-exclamation-triangle"></i> GAGAL!</h5>
+                      {{session('warning')}}
+                  </div>
+                  @elseif(session('error'))
+                  <div class="alert alert-danger alert-dismissible" style="margin-top: 30px;">
+                      <button type="button" class="close" data-dismiss="alert"
+                          aria-hidden="true">&times;</button>
+                      <h5><i class="icon fas fa-exclamation-triangle"></i> GAGAL!</h5>
+                      {{session('error')}}
+                  </div>
+                  @endif
+
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                       <th>ID.Kunjungan</th>
+                      <th>Nama Pegawai</th>
+                      <th>Nama Customer</th>
                       <th>Daerah</th>
                       <th>Tanggal</th>
                       <th>Status</th>
@@ -105,40 +130,27 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                      <td>0001</td>
-                      <td>Mengwi</td>
-                      <td>12/01/2021</td>
-                      <td>Selesai</td>
-                      <td>
-                        <a href="/lihat-penjadwalan" class="btn btn-info btn-sm btn-status" title='Lihat'>
-                          <i class='fa fa-eye'></i>
-                        </a>
-                        <a href="/edit-penjadwalan" title='edit' class="btn btn-warning btn-sm">
-                          <i class="fa fa-edit"></i>
-                        </a>                                     
-                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                          <i class="far fa-trash-alt"></i>
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>0001</td>
-                      <td>Mengwi</td>
-                      <td>12/01/2021</td>
-                      <td>Selesai</td>
-                      <td>
-                        <a href="/lihat-penjadwalan" class="btn btn-info btn-sm btn-status" title='Lihat'>
-                          <i class='fa fa-eye'></i>
-                        </a>
-                        <a href="/edit-penjadwalan" title='edit' class="btn btn-warning btn-sm">
-                          <i class="fa fa-edit"></i>
-                        </a>                                     
-                        <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="" title='Delete'>
-                          <i class="far fa-trash-alt"></i>
-                        </a>
-                      </td>
-                    </tr>
+                      @foreach ($jadwal as $item)
+                      <tr>
+                        <td>{{ $item->id_kunjungan  }}</td>
+                        <td>{{ $item->nama_pegawai  }}</td>
+                        <td>{{ $item->nama_customer  }}</td>
+                        <td>{{ $item->daerah  }}</td>
+                        <td>{{ $item->tanggal  }}</td>
+                        <td>{{ $item->status  }}</td>
+                        <td>
+                          <a href="{{ route('lihat-penjadwalan', ['id'=>$item->id_kunjungan]) }}" class="btn btn-info btn-sm btn-status" title='Lihat'>
+                            <i class='fa fa-eye'></i>
+                          </a>
+                          <a href="{{ route('edit-penjadwalan', ['id'=>$item->id_kunjungan]) }}" title='edit' class="btn btn-warning btn-sm">
+                            <i class="fa fa-edit"></i>
+                          </a>                                     
+                          <a type="button" class="btn btn-danger btn-sm btn-delete" onclick="idJadwal({{$item->id_kunjungan}})" title='Delete'>
+                            <i class="far fa-trash-alt"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      @endforeach
                   </table>
                 </div>
                 <!-- /.card-body -->
@@ -154,6 +166,56 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <!-- modal-delete -->
+    <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Peringatan! </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Data Jadwal Kunjungan akan dihapus. Anda yakin? </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                <button type="buttpn" class="btn btn-warning btn-delete-ask" data-dismiss="modal">
+                    Continue</button>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="modal-delete-confirm" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Peringatan! </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Data Jadwal Kunjungan yang terhubung dengan data lainnya juga akan dihapus. Anda
+                    yakin? </p>
+            </div>
+            <div class="modal-footer">
+                <form action="{{ route('delete-penjadwalan') }}" method="post">
+                    @csrf
+                    <input type="hidden" id="id_kunjungan" name="id_kunjungan">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger btn-confirm-delete"> Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+  </div>
    
     <!-- footer -->
     @include('admin.admin_layouts.footer')
@@ -211,6 +273,21 @@
   <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
   <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
   
+
+  {{-- Select2 --}}
+  <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
+  <!-- Bootstrap4 Duallistbox -->
+  <script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+  <script>
+      $(".select2").select2();
+          //Initialize Select2 Elements
+      $('.select2bs4').select2({
+      theme: 'bootstrap4'
+      })
+
+  </script>
+
   <script>
     $(function () {
       $("#example1").DataTable({
@@ -218,6 +295,17 @@
         "buttons": ["copy", "csv", "excel", "pdf", "print"]
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
+
+    function idJadwal(id) {
+      console.log(id)
+      $('#modal-delete').modal('show')
+      $('#id_kunjungan').val(id)
+    }
+
+    $('body').on('click', '.btn-delete-ask', function () {
+        $('#modal-delete-confirm').modal('show')
+    })
+
   </script>
 </body>
 </html>

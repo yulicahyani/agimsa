@@ -151,7 +151,7 @@
                                                 <td>{{ $item->nama_customer }}</td>
                                                 <td>{{ $item->alamat }}</td>
                                                 <td>{{ $item->tanggal_pesan }}</td>
-                                                <td>{{ $item->kode_barang }}</td>
+                                                <td>@php printf('%04d',$item->kode_barang); @endphp</td>
                                                 <td>{{ $item->nama_barang }}</td>
                                                 <td>{{ $item->qty }}</td>
                                                 <td>{{ $item->pembayaran }}</td>
