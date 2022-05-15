@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'data barang')</title>
+    <title>@yield('title', 'data barang gudang')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -31,6 +31,11 @@
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
+
+     <!-- DataTables -->
+     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css"> 
 
     @push('styles')
     <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
@@ -124,13 +129,14 @@
                                                 <th>Nama Barang</th>
                                                 <th>Merk</th>
                                                 <th>Jumlah Stok</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($barang as $key=>$item)
                                             <tr>
                                                 <td>{{ $key+1}}</td>
-                                                <td> @php printf('%04d',$item->kode_barang); @endphp</td>
+                                                <td> @php printf('%04d',$item->kode_barang); @endphp </td>
                                                 <td>{{ $item->nama_barang }}</td>
                                                 <td>{{ $item->merk }}</td>
                                                 <td>{{ $item->jumlah_stok }}</td>
@@ -149,6 +155,7 @@
                                                 </td>
                                             </tr>
                                             @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
