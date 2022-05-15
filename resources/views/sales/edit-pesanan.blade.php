@@ -185,15 +185,8 @@
                 <!-- text input -->
                 <div class="form-group">
                     <label>Status</label>
-                    <select class="form-control select2" style="width: 100%;" name="status"
-                        required>
-                        <option value="setuju" {{ $pemesanan->status=='setuju'?'selected':'' }}
-                            selected>Setuju</option>
-                        <option value="tunda" {{ $pemesanan->status=='tunda'?'selected':'' }}>Tunda
-                        </option>
-                        <option value="selesai" {{ $pemesanan->status=='selesai'?'selected':'' }}>
-                            Selesai</option>
-                    </select>
+                    <input type="text" name="status" class="form-control"
+                    value="{{ $pemesanan->status }}" required readonly>
                 </div>
                 </div>
             </div>

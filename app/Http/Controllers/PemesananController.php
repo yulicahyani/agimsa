@@ -75,6 +75,31 @@ class PemesananController extends Controller
                 $pemesanan->status = $post['status'];
 
                 if ( $pemesanan->isDirty() ){
+
+                    //cek status untum mengurangi dan menambah stok barang
+                    if($pemesanan->isDirty('status')){
+                        $barang = Barang::find($pemesanan->kode_barang);
+                        if( ($pemesanan->status == 'setuju') ){
+                            if($pemesanan->qty > $barang->jumlah_stok){
+                                //Stok barang kurang
+                                return redirect()->route('pemesanan')->with(['warning'=>'Stok barang kurang, status tidak bisa diubah']);
+                            }else{
+                                //kurangi stok
+                                $barang->jumlah_stok = $barang->jumlah_stok - $pemesanan->qty;
+                            }
+
+                        } else if ($pemesanan->status == 'tunda') {
+                            //tambah kembali stok
+                            $barang->jumlah_stok = $barang->jumlah_stok + $pemesanan->qty;
+                        }
+
+                        //simpan perubahan barang
+                        if($barang->isDirty()){
+                            $barang->save();
+                        }   
+
+                    }
+
                     $pemesanan->save();
                     return redirect()->route('pemesanan')->with(['success'=>'Update berhasil disimpan']);
                 }
