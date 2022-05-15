@@ -100,7 +100,7 @@
                   @foreach ($barang as $key=>$item)
                   <tr>
                     <td>{{ $key+1}}</td>
-                    <td>{{ $item->kode_barang }}</td>
+                    <td>@php printf('%04d',$item->kode_barang); @endphp</td>
                     <td>{{ $item->nama_barang }}</td>
                     <td>{{ $item->jumlah_stok }}</td>
                     <td>{{ $item->merk }}</td>

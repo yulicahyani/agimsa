@@ -138,7 +138,7 @@
                                           @foreach ($penjualan as $key=>$item)
                                           <tr>
                                             <td>{{$key+1}} </td>
-                                            <td> @php printf('%04d',$item->no_faktur); @endphp </td>
+                                            <td> @php printf('%06d',$item->no_faktur); @endphp </td>
                                             <td>{{$item->tanggal}}</td>
                                             <td>{{$item->alamat}}</td>
                                             <td>{{$item->total_barang}}</td>

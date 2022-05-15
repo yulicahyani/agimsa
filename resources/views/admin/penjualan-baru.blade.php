@@ -157,8 +157,10 @@
                                                     <td>
                                                         <div class="input-group input-group-sm">
                                                             <label class="mr-2">No Faktur :</label>
-                                                            <input type="number" name="faktur" class="form-control"
-                                                            value="{{ isset($no_faktur) ?printf('%06d',$item->no_faktur) :'' }}" required readonly >
+                                                            <input type="number" name="" class="form-control"
+                                                            value="@php isset($no_faktur)? printf('%06d',$no_faktur): ''; @endphp" required readonly >
+                                                            <input type="hidden" name="faktur" class="form-control"
+                                                            value="{{ isset($no_faktur)?$no_faktur :'' }}" required readonly >
                                                         </div>
                                                     </td>
                                                 </tr>
