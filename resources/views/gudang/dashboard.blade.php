@@ -80,7 +80,7 @@
             <!-- small box -->
             <div class="small-box bg-info" style="height: 150px">
               <div class="inner">
-                <h3>4</h3>
+                <h3> {{$countUser}} </h3>
 
                 <p>User</p>
               </div>
@@ -94,7 +94,7 @@
             <!-- small box -->
             <div class="small-box bg-success" style="height: 150px">
               <div class="inner">
-                <h3>4<sup style="font-size: 20px"></sup></h3>
+                <h3> {{$countPenjualan}} <sup style="font-size: 20px"></sup></h3>
 
                 <p>Penjualan</p>
               </div>

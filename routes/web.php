@@ -84,23 +84,6 @@ Route::match(['get', 'post'], '/edit-pengiriman/{id}', [PengirimanController::cl
 Route::get('/lihat-pengiriman/{id}', [PengirimanController::class, 'lihat_pengiriman'])->name('lihat-pengiriman');
 Route::post('/delete-pengiriman', [PengirimanController::class, 'delete_pengiriman'])->name('delete-pengiriman');
 
-Route::get('/tambah-pengiriman', function () {
-    return view('admin\tambah-pengiriman', [
-        "title" => "Pengiriman"
-    ]);
-});
-
-Route::get('/edit-pengiriman', function () {
-    return view('admin\edit-pengiriman', [
-        "title" => "Pengiriman"
-    ]);
-});
-
-Route::get('/lihat-pengiriman', function () {
-    return view('admin\lihat-pengiriman', [
-        "title" => "Pengiriman"
-    ]);
-});
 
 Route::get('/penjadwalan', function () {
     return view('admin\penjadwalan', [
@@ -167,18 +150,16 @@ Route::get('/lihat-jadwal/{id}', [JadwalController::class, 'lihat_jadwal'])->nam
 
 
 /* -----------Gudang-----------------*/
+// Dasboard
+Route::get('/gudang', [DashboardController::class, 'index_gudang'])->name('gudang');
 
-Route::get('/gudang', function () {
-    return view('gudang\dashboard', [
-        "title" => "Dashboard"
-    ]);
-});
+//Data Barang
+Route::get('/data-barang-gudang', [BarangController::class, 'index_gudang'])->name('data-barang-gudang');
+Route::match(['get', 'post'], '/tambah-barang', [BarangController::class, 'tambah_barang'])->name('tambah-barang');
+Route::match(['get', 'post'], '/edit-barang/{kode}', [BarangController::class, 'edit_barang'])->name('edit-barang');
+Route::post('/delete-barang', [BarangController::class, 'delete_barang'])->name('delete-barang');
+Route::get('/lihat-barang', [BarangController::class, 'detail_barang'])->name('lihat-barang');
 
-Route::get('/data-barang-gudang', function () {
-    return view('gudang\data-barang', [
-        "title" => "Data Barang"
-    ]);
-});
 
 Route::get('/stok-barang', function () {
     return view('gudang\stok-barang', [
