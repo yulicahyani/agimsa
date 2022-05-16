@@ -59,7 +59,7 @@ Route::get('/detail-pegawai', [PegawaiController::class, 'detail_pegawai_by_id']
 Route::match(['get', 'post'], '/tambah-target', [TargetController::class, 'tambah_target'])->name('tambah-target');
 Route::post('/delete-target', [TargetController::class, 'delete_target'])->name('delete-target');
 Route::match(['get', 'post'], '/edit-target/{id}', [TargetController::class, 'edit_target'])->name('edit-target');
-Route::get('/lihat-target/{id}', [JadwalController::class, 'lihat_target'])->name('lihat-target');
+Route::get('/lihat-target/{id}', [TargetController::class, 'lihat_target'])->name('lihat-target');
 
 
 //Pengiriman

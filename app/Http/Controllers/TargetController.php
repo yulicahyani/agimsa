@@ -220,8 +220,9 @@ class TargetController extends Controller
     {
         if(session()->has('user') && session('user')->jabatan == 'Admin'){
             $data = [
-                'title' => 'Penjadwalan',
-                'target'=> Target::find($id)
+                'title' => 'Target',
+                'target'=> Target::find($id),
+                'sales' => Pegawai::where('jabatan', 'Sales')->get()
             ];
     
             return view('admin\lihat-target', $data);
