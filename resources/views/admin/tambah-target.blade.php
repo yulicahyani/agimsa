@@ -219,10 +219,8 @@
 <!-- Bootstrap4 Duallistbox -->
 <script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <script>
-  $(".select2").select2();
-      //Initialize Select2 Elements
-  $('.select2bs4').select2({
-  theme: 'bootstrap4'
+ $('.select2').select2({
+    theme: 'bootstrap4'
   })
 
 </script>

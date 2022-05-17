@@ -177,7 +177,7 @@
                                     <!-- text input -->
                                     <div class="form-group">
                                         <label>Sales</label>
-                                        <select class="form-control select2" style="width: 100%;" name="sales" required>
+                                        <select class="form-control select2" id="selectpegawai" style="width: 100%;" name="sales" required>
                                             @foreach ($sales as $item)
                                             <option value="{{ $item->nama_pegawai }}"
                                                 {{ $pemesanan->sales==$item->nama_pegawai?'selected':'' }}>
@@ -266,12 +266,10 @@
     <!-- Bootstrap4 Duallistbox -->
     <script src="{{ asset('') }}assets/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
     <script>
-        $(".select2").select2();
-            //Initialize Select2 Elements
-        $('.select2bs4').select2({
-        theme: 'bootstrap4'
-        })
-
+        $(".select2").select2({
+            theme: 'bootstrap4'
+        });
+        
     </script>
 
     <script>

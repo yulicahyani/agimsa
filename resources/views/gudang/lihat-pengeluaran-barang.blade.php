@@ -110,7 +110,7 @@
                                                         <div class="input-group input-group-sm">
                                                             <label class="mr-2">Nama Barang</label>
                                                             <input type="text" name="nama_barang" class="form-control" 
-                                                            value="{{ isset($barang) ? $barang->nama_barang :null }}"required>
+                                                            value="{{ isset($barang) ? $barang->nama_barang :null }}"required readonly>
                                                         </div>
                                                     </td>
                                                     <td>

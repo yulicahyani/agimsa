@@ -43,13 +43,13 @@ class LoginController extends Controller
             return redirect('/');
         }
 
-        return back()->with('loginError', 'Username atau Password Salah!');
+        return back()->with('loginError', 'Username or Password Wrong!');
     }
 
     public function logout(Request $request){
         if(session()->has('user')){
             session()->pull('user');
         }
-        return redirect('login')->with('success', 'Anda berhasil logout');
+        return redirect('login')->with('success', 'You have successfully logged out');
     }
 }

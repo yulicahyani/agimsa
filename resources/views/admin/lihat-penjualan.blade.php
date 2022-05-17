@@ -176,6 +176,30 @@
                                                 <td>Jumlah Bayar</td>
                                                 <td> {{$jumlah_bayar}} </td>
                                             </tr>
+                                            <tr class="text-white">
+                                                <td>Customer :{{ isset($pemesanan) ? $pemesanan->nama_customer :null }}</td>
+                                                <td>Sales : {{ isset($pemesanan) ? $pemesanan->sales:null }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="text-white">
+                                                <td>Alamat : {{ isset($penjualan[0]->alamat) ? $penjualan[0]->alamat :null }}</td>
+                                                <td>No faktur :  @php isset($penjualan[0]->no_faktur)? printf('%06d',$penjualan[0]->no_faktur): null; @endphp</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr class="text-white">
+                                                <td>Tanggal : {{ isset($penjualan[0]->tgl_penjualan) ? $penjualan[0]->tgl_penjualan:null }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -255,14 +279,15 @@
             //   "responsive": true, "lengthChange": false, "autoWidth": false, "info": false,"ordering": false,
             //   "buttons": ["copy", "csv", "excel", "pdf", "print"]
             // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example1').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": false,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+            $(function () {
+                $("#example1").DataTable({
+                    "responsive": true,
+                    "lengthChange": false,
+                    "autoWidth": false,
+                    "buttons": ["csv", "excel", "pdf", "print"],
+                    "ordering": false,
+                    'info': false,
+                }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             });
             $('#example2').DataTable({
                 "paging": true,

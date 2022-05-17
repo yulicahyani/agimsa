@@ -37,6 +37,10 @@
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
+     <!-- Select2 -->
+     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2/css/select2.min.css">
+     <link rel="stylesheet" href="{{ asset('') }}assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+
     @push('styles')
     <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
     @endpush
@@ -168,7 +172,7 @@
                                                     <td>
                                                         <div class="input-group input-group-sm">
                                                             <label class="mr-2">Tanggal :</label>
-                                                            <input type="date" name="tanggal" class="form-control" required>
+                                                            <input type="date" name="tanggal" id="tanggal" class="form-control" required>
                                                         </div>
                                                     </td>
                                                     <td>
@@ -224,15 +228,7 @@
                                             </tr>
                                             <tr class="text-white">
                                                 <td>Alamat : {{ isset($current_customer) ? $current_customer->alamat :null }}</td>
-                                                <td>No faktur : Ketut</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            <tr class="text-white">
-                                                <td>Tanggal : 13/05/2022</td>
-                                                <td></td>
+                                                <td>No faktur : {{ isset($no_faktur)?$no_faktur :'' }}</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
@@ -310,6 +306,14 @@
     <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="{{ asset('') }}assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+    {{-- Select2 --}}
+    <script src="{{ asset('assets/plugins/select2/js/select2.full.min.js')}}"></script>
+    <script>
+        $(".select2").select2({
+            theme: 'bootstrap4'
+        });
+    </script>
 
     <script>
         $(function () {
