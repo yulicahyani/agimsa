@@ -20,7 +20,7 @@ class CreateTargetsTable extends Migration
             $table->date('tanggal');
             $table->integer('penjualan');
             $table->string('persentase', 10);
-            $table->string('status', 10);
+            $table->string('status', 100);
         });
 
         Schema::table('tb_target', function (Blueprint $table) {

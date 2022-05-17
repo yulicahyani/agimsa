@@ -28,6 +28,12 @@
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('') }}assets/plugins/summernote/summernote-bs4.min.css">
+    <!-- VENDOR CSS -->
+	<link rel="stylesheet" href="{{ asset('') }}assets/assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ asset('') }}assets/assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="{{ asset('') }}assets/assets/vendor/chartist/css/chartist-custom.css">
+  <!-- MAIN CSS -->
+	<link rel="stylesheet" href="{{ asset('') }}assets/assets/css/main.css">
 
   @push('styles')
       <link href="{{ asset('css/custom-style.css') }}" rel="stylesheet">
@@ -53,11 +59,11 @@
   <!-- /.Main Sidebar Container -->
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper mb-5">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
+        <div class="row">
           <div class="col-sm-6">
             <h1 class="m-0">Dashboard</h1>
           </div><!-- /.col -->
@@ -74,46 +80,81 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-6 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info" style="height: 150px">
-              <div class="inner">
-                <h3>{{ $countUser }}</h3>
-
-                <p>User</p>
+    <section >
+      <div class="" style="background-color: light">
+        <!-- MAIN CONTENT -->
+        <div class="main-content" style="background-color: light">
+          <div class="container-fluid">
+            <!-- OVERVIEW -->
+            <div class="panel panel-headline">
+              <div class="panel-heading">
+                <h3 class="panel-title">Overview Bulanan</h3>
+                <p class="panel-subtitle">Tanggal: {{ $tanggal }}</p>
               </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="metric">
+                      <span class="icon"><i class="fa fa-shopping-bag"></i></span>
+                      <p>
+                        <span class="number">{{ $countPenjualanBulanan }}</span>
+                        <span class="title">Penjualan Bulanan</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="metric">
+                      <span class="icon"><i class="fa fa-cart-plus"></i></span>
+                      <p>
+                        <span class="number">{{ $countCustomer }}</span>
+                        <span class="title">Customer</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="metric">
+                      <span class="icon"><i class="fa fa-users"></i></span>
+                      <p>
+                        <span class="number">{{ $countUser }}</span>
+                        <span class="title">Pegawai</span>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="metric">
+                      <span class="icon"><i class="fa fa-th-large"></i></span>
+                      <p>
+                        <span class="number">{{ $countProduk }}</span>
+                        <span class="title">Produk</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-9">
+                    <p id="title_grafik">Grafik Penjualan</p>
+                    <div id="headline-chart" class="ct-chart"></div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="weekly-summary text-right">
+                      <span class="number">{{ $countPenjualan }}</span> <span class="percentage"></span>
+                      <span class="info-label">Total Penjualan</span>
+                    </div>
+                    <div class="weekly-summary text-right">
+                      <span class="number">Rp. {{ $countPendapatanBulanan }}</span> <span class="percentage"></span>
+                      <span class="info-label">Pendapatan Bulanan</span>
+                    </div>
+                    <div class="weekly-summary text-right">
+                      <span class="number">Rp. {{ $countPendapatan }}</span> <span class="percentage"></span>
+                      <span class="info-label">Total Pendapatan</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-6 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success" style="height: 150px">
-              <div class="inner">
-                <h3>{{ $countPenjualan }}<sup style="font-size: 20px"></sup></h3>
-
-                <p>Penjualan</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
         </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="card mt-2 text-center bg-abu-putih" style="height: 250px">
-            <h1 class="my-auto">Selamat Datang {{ session('user')==null?'':session('user')->jabatan}}</h1>
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -160,5 +201,46 @@
 {{-- <script src="{{ asset('') }}assets/dist/js/demo.js"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('') }}assets/dist/js/pages/dashboard.js"></script>
+<script src="{{ asset('') }}assets/assets/vendor/jquery/jquery.min.js"></script>
+	<script src="{{ asset('') }}assets/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="{{ asset('') }}assets/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="{{ asset('') }}assets/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="{{ asset('') }}assets/assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="{{ asset('') }}assets/assets/scripts/klorofil-common.js"></script>
+	<script>
+	$(function() {
+    var data_g, options;
+    let penjualanperbulan = '{{ json_encode($penjualanperbulan) }}';
+
+    let penjualan = JSON.parse(penjualanperbulan);
+    console.log(penjualan)
+    console.log(typeof penjualan )
+    // headline charts
+    data = {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agt', 'Sep', 'Okt', 'Nov', 'Des'],
+      series: [
+        penjualan,
+      ]
+    };
+
+    options = {
+      height: 300,
+      showArea: true,
+      showLine: false,
+      showPoint: false,
+      fullWidth: true,
+      axisX: {
+        showGrid: false
+      },
+      lineSmooth: false,
+      chartPadding: {
+        left: 20,
+        right: 30
+      }
+    };
+
+    new Chartist.Line('#headline-chart', data, options);
+	});
+	</script>
 </body>
 </html>

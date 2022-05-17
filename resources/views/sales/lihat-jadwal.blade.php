@@ -85,8 +85,8 @@
             <div class="col-12">
               <div class="card">
                 <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example1" class="">
+                <div class="card-body pl-5">
+                  <table id="example1" class="pl-3">
                     <thead>
                     <tr class="text-white">
                       <th></th>
@@ -96,50 +96,50 @@
                     </thead>
                     <tbody>
                     <tr style="height: 50px">
-                      <td>ID. Kunjungan :</td>
-                      <td style="width: 50px"></td>
+                      <td>ID. Kunjungan</td>
+                      <td style="width: 50px">:</td>
                       <td>{{ $jadwal->id_kunjungan }}</td>
                     </tr>
                     <tr style="height: 50px">
-                      <td>Nama Customer :</td>
-                      <td></td>
+                      <td>Nama Customer</td>
+                      <td>:</td>
                       <td>{{ $jadwal->nama_customer }}</td>
                     </tr>
                     <tr style="height: 50px">
-                        <td>Nama Sales :</td>
-                        <td></td>
+                        <td>Nama Sales</td>
+                        <td>:</td>
                         <td>{{ $jadwal->nama_pegawai }}</td>
                     </tr>
                     <tr style="height: 50px">
-                        <td>Tanggal :</td>
-                        <td></td>
+                        <td>Tanggal</td>
+                        <td>:</td>
                         <td>{{ $jadwal->tanggal }}</td>
                     </tr>
                     <tr style="height: 50px">
-                        <td>Daerah :</td>
-                        <td></td>
+                        <td>Daerah</td>
+                        <td>:</td>
                         <td>{{ $jadwal->daerah }}</td>
                     </tr>
                     <tr style="height: 50px">
-                        <td>Alamat :</td>
-                        <td></td>
+                        <td>Alamat</td>
+                        <td>:</td>
                         <td>{{ $jadwal->lokasi_kunjungan }}</td>
                     </tr>
                     <tr style="height: 50px">
-                        <td>Status :</td>
-                        <td></td>
+                        <td>Status</td>
+                        <td>:</td>
                         <td>{{ $jadwal->status }}</td>
                     </tr>
                     <tr style="height: 60px">
-                        <td>Keterangan :</td>
-                        <td></td>
+                        <td>Keterangan</td>
+                        <td>:</td>
                         <td>{{ $jadwal->keterangan }}</td>
                     </tr>
                   </table>
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
+                <div class="card-footer ml-4">
                     <a href="/jadwal-kunjungan" class="btn btn-primary" title='back'>
                         Kembali
                     </a>
